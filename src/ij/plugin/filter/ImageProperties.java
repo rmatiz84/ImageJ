@@ -1,14 +1,21 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.util.Tools;
+import java.awt.Color;
+import java.awt.TextField;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.util.Locale;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
 import ij.io.FileOpener;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 import ij.measure.Calibration;
 import ij.plugin.frame.Recorder;
+import ij.process.ImageProcessor;
+import ij.util.Tools;
 
 public class ImageProperties implements PlugInFilter, TextListener {
 	private final String SAME = "-";

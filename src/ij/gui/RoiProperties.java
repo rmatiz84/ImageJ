@@ -1,15 +1,24 @@
 package ij.gui;
-import ij.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.measure.Calibration;
+import ij.measure.ResultsTable;
 import ij.plugin.Colors;
-import ij.io.RoiDecoder;
-import ij.process.*;
-import ij.measure.*;
-import ij.util.Tools;
 import ij.plugin.filter.Analyzer;
+import ij.process.FloatPolygon;
 import ij.text.TextWindow;
-import java.awt.*;
-import java.util.*;
-import java.awt.event.*;
+import ij.util.Tools;
 
 
  /** Displays a dialog that allows the user to specify ROI properties such as color and line width. */

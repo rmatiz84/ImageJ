@@ -1,11 +1,18 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.util.Tools;
-import ij.plugin.filter.Analyzer;
-import java.awt.*;
+import java.awt.AWTEvent;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.Vector;
+
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.Overlay;
+import ij.plugin.filter.Analyzer;
+import ij.util.Tools;
 
 /** This plugin implements the Image/Overlay/Labels command. */
 public class OverlayLabels implements PlugIn, DialogListener {

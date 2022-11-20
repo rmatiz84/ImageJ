@@ -1,13 +1,29 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
+import java.awt.AWTEvent;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Label;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Prefs;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.MultiLineLabel;
+import ij.gui.OvalRoi;
+import ij.gui.PointRoi;
+import ij.gui.Roi;
 import ij.measure.Calibration;
 import ij.plugin.filter.EDM;
 import ij.plugin.filter.ThresholdToSelection;
 import ij.plugin.frame.Recorder;
-import java.awt.*;
-import java.util.Vector;
+import ij.process.ByteProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
 
 /** This plugin, which enlarges or shrinks selections, implements the Edit/Selection/Enlarge command. */
 public class RoiEnlarger implements PlugIn, DialogListener {

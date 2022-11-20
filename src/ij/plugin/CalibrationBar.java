@@ -1,17 +1,36 @@
 package ij.plugin;
-import ij.*;
-import static ij.IJ.createImage;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.io.*;
-import java.awt.datatransfer.*;
-import ij.gui.*;
-import ij.process.*;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.TextEvent;
+import java.awt.image.BufferedImage;
+import java.awt.image.IndexColorModel;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.Line;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.gui.TextRoi;
+import ij.measure.Calibration;
 import ij.measure.Measurements;
 import ij.plugin.filter.Analyzer;
-import ij.text.TextWindow;
-import ij.measure.*;
+import ij.process.ByteProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ImageStatistics;
 
 /** This plugin implements the Analyze/Tools/Calibration Bar command.
 	Bob Dougherty, OptiNav, Inc., 4/14/2002

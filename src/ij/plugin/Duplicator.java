@@ -1,13 +1,31 @@
 package ij.plugin;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
 import java.util.Vector;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.util.Tools;
-import ij.plugin.frame.Recorder;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.gui.RotatedRectRoi;
+import ij.gui.ShapeRoi;
+import ij.gui.Toolbar;
 import ij.measure.Calibration;
+import ij.plugin.frame.Recorder;
+import ij.process.ImageProcessor;
+import ij.process.LUT;
+import ij.util.Tools;
 
 /** This plugin implements the Image/Duplicate command.
 <pre>

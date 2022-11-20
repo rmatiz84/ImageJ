@@ -1,18 +1,23 @@
 package ij.gui;
-import ij.*;
-import ij.process.*;
+import java.awt.AWTEvent;
+import java.awt.Checkbox;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.TextField;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
 import ij.measure.CurveFitter;
 import ij.measure.Minimizer;
-import ij.text.TextWindow;
 import ij.measure.ResultsTable;
 import ij.plugin.Colors;
 import ij.plugin.frame.Recorder;
+import ij.text.TextWindow;
 import ij.util.Tools;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Arrays;
-import java.util.Vector;
-import java.util.ArrayList;
 
 /** This class implements the Plot Window's Data>"Add from Plot", "Add form Table", "Add Fit" and
  *  "More>Contents Style" dialogs

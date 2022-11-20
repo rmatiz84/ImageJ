@@ -1,10 +1,15 @@
 package ij.gui;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.geom.*;
-import ij.*;
-import ij.process.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.geom.Ellipse2D;
+
+import ij.ImagePlus;
 import ij.measure.Calibration;
+import ij.process.ByteProcessor;
+import ij.process.FloatPolygon;
+import ij.process.ImageProcessor;
 
 /** Oval region of interest */
 public class OvalRoi extends Roi {

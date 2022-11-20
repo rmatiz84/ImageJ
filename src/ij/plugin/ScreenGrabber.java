@@ -1,8 +1,16 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Robot;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
 
 /** This plugin implements the Plugins/Utilities/Capture Screen
     and Plugins/Utilities/Capture Image commands. Note that these

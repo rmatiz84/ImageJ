@@ -1,9 +1,16 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.plugin.frame.ThresholdAdjuster;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Window;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.PlotWindow;
 
 /** This class implements the Window menu's "Show All", "Main Window", "Cascade" and "Tile" commands. */
 public class WindowOrganizer implements PlugIn {

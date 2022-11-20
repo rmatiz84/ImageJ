@@ -1,13 +1,17 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.io.*;
-import ij.plugin.filter.*;
-import ij.util.Tools;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Vector;
+
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.Roi;
+import ij.gui.Toolbar;
 
 /** This plugin implements most of the Edit/Options/Colors command. */
 public class Colors implements PlugIn, ItemListener {

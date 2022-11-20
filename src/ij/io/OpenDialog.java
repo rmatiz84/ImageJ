@@ -1,13 +1,19 @@
 package ij.io;
-import ij.*;
-import ij.gui.*;
+import java.awt.EventQueue;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.io.File;
+
+import javax.swing.JFileChooser;
+import javax.swing.LookAndFeel;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.Macro;
+import ij.Prefs;
+import ij.macro.Interpreter;
 import ij.plugin.frame.Recorder;
 import ij.util.Java2;
-import ij.macro.Interpreter;
-import java.awt.*;
-import java.io.*;
-import javax.swing.*;
-import javax.swing.filechooser.*;
 
 /** This class displays a dialog window from 
  * which the user can select an input file.

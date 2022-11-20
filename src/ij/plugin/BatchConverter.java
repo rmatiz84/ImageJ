@@ -1,12 +1,18 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.util.Tools;
-import ij.io.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.gui.GenericDialog;
+import ij.io.Opener;
+import ij.process.ImageProcessor;
 
 /** This plugin implements the File/ /Convert command, 
 	which converts the images in a folder to a specified format. */

@@ -1,8 +1,11 @@
 package ij.gui;
-import ij.*;
-import ij.plugin.*;
-import java.awt.*;
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.TextField;
 import java.util.Vector;
+
+import ij.plugin.Colors;
+import ij.plugin.PlugIn;
 
 /** This plugin implements the Edit/Options/Roi Defaults command. */
 public class RoiDefaultsDialog implements PlugIn, DialogListener {

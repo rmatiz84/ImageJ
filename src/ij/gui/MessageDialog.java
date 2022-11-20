@@ -1,7 +1,20 @@
 package ij.gui;
-import ij.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import ij.IJ;
+import ij.Prefs;
 
 /** A modal dialog box that displays information. Based on the
 	InfoDialogclass from "Java in a Nutshell" by David Flanagan. */

@@ -1,9 +1,21 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Undo;
+import ij.gui.GenericDialog;
+import ij.gui.ImageRoi;
+import ij.gui.Line;
+import ij.gui.PointRoi;
+import ij.gui.PolygonRoi;
+import ij.gui.Roi;
+import ij.gui.ShapeRoi;
+import ij.process.FloatPolygon;
 
 /** This plugin implements the Edit/Selection/Rotate command. */
 public class RoiRotator implements PlugIn {

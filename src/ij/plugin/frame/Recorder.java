@@ -1,17 +1,40 @@
 package ij.plugin.frame;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import java.io.*;
-import ij.*;
-import ij.plugin.*;
-import ij.plugin.frame.*; 
-import ij.text.*;
-import ij.gui.*;
-import ij.util.*;
-import ij.io.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Button;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.Polygon;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.WindowEvent;
+import java.util.Locale;
+import java.util.StringTokenizer;
+
+import ij.IJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Menus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.Arrow;
+import ij.gui.GUI;
+import ij.gui.Line;
+import ij.gui.Roi;
+import ij.gui.TextRoi;
+import ij.gui.Toolbar;
+import ij.measure.CurveFitter;
+import ij.plugin.Colors;
+import ij.plugin.NewPlugin;
+import ij.plugin.PlugIn;
+import ij.util.Tools;
 
 /** This is ImageJ's macro recorder. */
 public class Recorder extends PlugInFrame implements PlugIn, ActionListener, ImageListener, ItemListener {

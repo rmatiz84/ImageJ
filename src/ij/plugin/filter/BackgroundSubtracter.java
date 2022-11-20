@@ -1,10 +1,18 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.AWTEvent;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Prefs;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ShortProcessor;
 import ij.util.Tools;
-import java.awt.*;
 
 
 /** Implements ImageJ's Subtract Background command. Based on the concept of the

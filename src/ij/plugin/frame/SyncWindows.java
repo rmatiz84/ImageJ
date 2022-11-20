@@ -1,11 +1,45 @@
 package ij.plugin.frame;
-import ij.*;
-import ij.gui.*;
+import java.awt.AWTEventMulticaster;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
+import java.awt.geom.GeneralPath;
+import java.util.EventListener;
+import java.util.EventObject;
+import java.util.Vector;
+
+import ij.CommandListener;
+import ij.Executer;
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.Overlay;
+import ij.gui.PolygonRoi;
+import ij.gui.Roi;
+import ij.gui.ShapeRoi;
+import ij.gui.Toolbar;
 import ij.measure.Calibration;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.util.*;
 
 
 /** This class "synchronizes" mouse input in multiple windows. Once

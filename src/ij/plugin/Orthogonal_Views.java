@@ -1,13 +1,44 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.measure.*;
-import ij.process.*;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.util.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.geom.GeneralPath;
+import java.awt.image.ColorModel;
+
+import ij.CommandListener;
+import ij.CompositeImage;
+import ij.Executer;
+import ij.IJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.Roi;
+import ij.measure.Calibration;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ShortProcessor;
  
 /**
  * This plugin projects dynamically orthogonal XZ and YZ views of a stack. 

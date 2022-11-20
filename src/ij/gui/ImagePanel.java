@@ -1,6 +1,9 @@
 package ij.gui;
-import java.awt.*;
-import ij.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Panel;
+
+import ij.ImagePlus;
 
 /** This class is used by GenericDialog to add images to dialogs. */
 public class ImagePanel extends Panel {

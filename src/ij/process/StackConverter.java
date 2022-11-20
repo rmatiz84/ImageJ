@@ -1,10 +1,14 @@
 package ij.process;
 
-import java.awt.*;
-import java.awt.image.*;
-import ij.*;
-import ij.gui.*;
-import ij.measure.*;
+import java.awt.Image;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.LookUpTable;
+import ij.gui.PlotVirtualStack;
+import ij.measure.Calibration;
 import ij.plugin.RGBStackConverter;
 
 /** This class does stack type conversions. */

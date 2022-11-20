@@ -1,11 +1,14 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.macro.Interpreter;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import java.awt.Choice;
+import java.awt.Font;
+import java.awt.TextArea;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
+
+import ij.IJ;
+import ij.gui.GenericDialog;
+import ij.macro.Interpreter;
 
 /** This plugin implements the Edit/Options/Startup command. */
 	public class Startup implements PlugIn, ItemListener {

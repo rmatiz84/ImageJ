@@ -1,14 +1,26 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.util.Tools;
+import java.awt.Checkbox;
+import java.awt.TextField;
+import java.awt.event.KeyEvent;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.gui.GenericDialog;
+import ij.gui.HistogramPlot;
+import ij.gui.HistogramWindow;
+import ij.gui.YesNoCancelDialog;
+import ij.measure.Calibration;
 import ij.plugin.filter.PlugInFilter;
 import ij.plugin.frame.Recorder;
-import ij.measure.Calibration;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Vector;
+import ij.process.ImageProcessor;
+import ij.process.ImageStatistics;
+import ij.process.StackStatistics;
+import ij.util.Tools;
 
 
 /** This plugin implements the Analyze/Histogram command. */

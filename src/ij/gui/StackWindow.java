@@ -1,10 +1,20 @@
 package ij.gui;
-import ij.*;
-import ij.measure.Calibration;
+import java.awt.Event;
+import java.awt.EventQueue;
+import java.awt.Point;
+import java.awt.Scrollbar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.ImageStack;
 import ij.plugin.frame.SyncWindows;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
 
 /** This class is an extended ImageWindow that displays stacks and hyperstacks. */
 public class StackWindow extends ImageWindow implements Runnable, AdjustmentListener, ActionListener, MouseWheelListener {

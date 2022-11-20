@@ -1,11 +1,14 @@
 package ij.gui;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import ij.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.measure.Calibration;
 import ij.plugin.frame.Recorder;
 import ij.process.FloatPolygon;
-import ij.measure.Calibration;
 
 /** This class implements the rotated rectangle selection tool. */
 public class RotatedRectRoi extends PolygonRoi {

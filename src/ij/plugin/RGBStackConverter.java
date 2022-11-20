@@ -1,8 +1,24 @@
 package ij.plugin;
-import java.awt.*;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
+import java.awt.AWTEvent;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Undo;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.process.ColorProcessor;
+import ij.process.ImageConverter;
+import ij.process.ImageProcessor;
 
 /** Converts a 2 or 3 slice stack, or a hyperstack, to RGB. */
 public class RGBStackConverter implements PlugIn, DialogListener {

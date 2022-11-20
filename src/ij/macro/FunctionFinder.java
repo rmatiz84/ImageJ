@@ -1,14 +1,28 @@
 package ij.macro;
-import ij.*;
-import ij.plugin.*;
-import ij.plugin.frame.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.awt.List;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.WindowManager;
 import ij.gui.GUI;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Hashtable;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Set;
+import ij.plugin.frame.Editor;
 
 /** This class implements the text editor's Macros/Find Functions command.
 	It was written by jerome.mutterer at ibmp.fr, and is based on Mark Longair's CommandFinder plugin.

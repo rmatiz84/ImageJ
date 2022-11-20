@@ -1,13 +1,26 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.plugin.filter.PlugInFilter.*;
-import ij.plugin.filter.*;
-import ij.measure.Calibration;
-import ij.macro.Interpreter;
-import java.awt.*;
-import java.util.*;
+import java.awt.AWTEvent;
+import java.awt.Checkbox;
+import java.awt.Rectangle;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.Prefs;
+import ij.Undo;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.Line;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
 
 public class PlugInFilterRunner implements Runnable, DialogListener {
 	private String command;					// the command, can be but need not be the name of the PlugInFilter

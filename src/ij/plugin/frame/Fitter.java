@@ -1,18 +1,40 @@
 package ij.plugin.frame;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import java.io.*;
-import java.awt.datatransfer.*;	
-import ij.*;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.StringTokenizer;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.Plot;
+import ij.io.OpenDialog;
+import ij.measure.CurveFitter;
+import ij.measure.Minimizer;
 import ij.plugin.PlugIn;
-import ij.plugin.frame.*;
-import ij.text.*;
-import ij.gui.*;
-import ij.util.*;
-import ij.io.*;
-import ij.process.*;
-import ij.measure.*;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.util.Tools;
 
 /** ImageJ plugin that does curve fitting using the modified CurveFitter class.
  *  Includes simplex settings dialog option.

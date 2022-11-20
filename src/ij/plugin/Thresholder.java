@@ -1,14 +1,28 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Vector;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.LookUpTable;
+import ij.Macro;
+import ij.Prefs;
+import ij.Undo;
+import ij.gui.GenericDialog;
+import ij.gui.Toolbar;
+import ij.measure.Measurements;
 import ij.plugin.frame.Recorder;
-import ij.plugin.filter.PlugInFilter;
 import ij.plugin.frame.ThresholdAdjuster;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import ij.process.AutoThresholder;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
+import ij.process.StackProcessor;
 
 /** This plugin implements the Process/Binary/Make Binary 
 	and Convert to Mask commands. */

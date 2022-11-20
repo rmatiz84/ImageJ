@@ -1,11 +1,32 @@
 package ij.plugin.tool;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.plugin.Colors;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AWTEvent;
+import java.awt.Choice;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Scrollbar;
+import java.awt.TextField;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.Undo;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageRoi;
+import ij.gui.OvalRoi;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.gui.Toolbar;
+import ij.plugin.Colors;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
 
 // Versions
 // 2012-07-22 shift to confine horizontally or vertically, ctrl-shift to resize, ctrl to pick

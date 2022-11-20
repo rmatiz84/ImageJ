@@ -1,8 +1,25 @@
 package ij.plugin.frame;
-import ij.*;
-import ij.gui.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.List;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import ij.CommandListener;
+import ij.Executer;
+import ij.IJ;
+import ij.ImageJ;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
 
 
 /** This plugin implements the Plugins>Utiltiees>Recent Commands command. */

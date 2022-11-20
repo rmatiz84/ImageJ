@@ -1,10 +1,29 @@
 package ij.gui;
-import ij.ImageJ;
+import java.awt.AWTEventMulticaster;
+import java.awt.Adjustable;
+import java.awt.BasicStroke;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Event;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Panel;
+import java.awt.RenderingHints;
+import java.awt.Scrollbar;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
+
 import ij.IJ;
 import ij.Prefs;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
 
 
 /** This class, based on Joachim Walter's Image5D package, adds "c", "z" labels 

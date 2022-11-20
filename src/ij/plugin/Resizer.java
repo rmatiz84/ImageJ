@@ -1,13 +1,26 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Checkbox;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.util.Vector;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Undo;
+import ij.gui.GenericDialog;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.gui.ShapeRoi;
+import ij.measure.Calibration;
+import ij.process.ImageProcessor;
+import ij.process.StackProcessor;
 import ij.util.Tools;
-import ij.plugin.frame.Recorder;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 
 /** This plugin implements the Edit/Crop and Image/Adjust/Size commands. */
 public class Resizer implements PlugIn, TextListener, ItemListener  {

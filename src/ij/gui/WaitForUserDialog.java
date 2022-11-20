@@ -1,9 +1,17 @@
 package ij.gui;
-import ij.*;
+import java.awt.Button;
+import java.awt.Dialog;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import ij.IJ;
 import ij.plugin.frame.RoiManager;
-import java.awt.*;
-import java.awt.event.*;
-import java.lang.reflect.*;
 
 
 /**

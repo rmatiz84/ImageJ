@@ -1,9 +1,17 @@
 package ij.gui;
-import ij.*;
-import ij.process.*;
-import ij.plugin.frame.Recorder;
-import java.awt.*;
+import java.awt.AWTEvent;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Frame;
 import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.plugin.frame.Recorder;
 
 /*
  * This class contains dialogs for formatting of plots (range, axes, labels, legend, creating a high-resolution plot)

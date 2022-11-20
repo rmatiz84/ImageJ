@@ -1,12 +1,32 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import java.awt.*;
-import ij.plugin.ChannelSplitter;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
 import java.awt.image.BufferedImage;
-import java.awt.event.*;
 import java.util.Vector;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.process.ImageProcessor;
 
 /**
  * This plugin implements the Image/Colors/Arrange Channels command,

@@ -1,10 +1,24 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import java.awt.*;
-import ij.measure.*;
-import java.awt.event.*;
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.TextField;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.gui.TextRoi;
+import ij.measure.Calibration;
+import ij.process.ByteProcessor;
+import ij.process.ImageProcessor;
+import ij.process.LUT;
 
 /** This plugin implements the Analyze/Tools/Scale Bar command.
  * Divakar Ramachandran added options to draw a background 

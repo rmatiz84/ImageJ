@@ -1,14 +1,22 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.util.ThreadUtil;
-
 import java.awt.AWTEvent;
 import java.awt.Rectangle;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Prefs;
+import ij.gui.DialogListener;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.util.ThreadUtil;
 
 /** This plug-in filter uses convolution with a Gaussian function for smoothing.
  * 'Radius' means the radius of decay to exp(-0.5) ~ 61%, i.e. the standard

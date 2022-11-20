@@ -1,13 +1,25 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
-import ij.util.Tools;
-import ij.io.FileOpener;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.TextEvent;
 import java.awt.geom.Rectangle2D;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.Line;
+import ij.gui.Roi;
+import ij.io.FileOpener;
+import ij.measure.Calibration;
+import ij.process.ImageProcessor;
+import ij.util.Tools;
 
 /** Implements the Analyze/Set Scale command. */
 public class ScaleDialog implements PlugInFilter {

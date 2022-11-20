@@ -1,8 +1,11 @@
 package ij.gui;
 
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import ij.macro.Interpreter;
-import java.awt.*;
-import java.awt.image.*;
 
 /**
  * This is the progress bar that is displayed in the lower right hand corner of

@@ -1,15 +1,24 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.io.*;
-import ij.plugin.frame.*;
-import ij.text.TextWindow;
-import ij.macro.Interpreter;
-import ij.plugin.Compiler;
+import java.applet.Applet;
 import java.awt.Window;
 import java.io.File;
-import java.applet.Applet;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.Undo;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.NewImage;
+import ij.io.FileSaver;
+import ij.io.Opener;
+import ij.macro.Interpreter;
+import ij.plugin.frame.PlugInDialog;
+import ij.plugin.frame.PlugInFrame;
+import ij.plugin.frame.Recorder;
+import ij.text.TextWindow;
 	
 /**	Runs miscellaneous File and Window menu commands. */
 public class Commands implements PlugIn {

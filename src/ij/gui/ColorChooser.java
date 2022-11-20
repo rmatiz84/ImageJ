@@ -1,11 +1,24 @@
 package ij.gui;
-import ij.*;
-import ij.process.*;
-import ij.util.*;
-import ij.plugin.Colors;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.Panel;
+import java.awt.Scrollbar;
+import java.awt.TextField;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
 import java.util.Vector;
-import java.awt.event.*;
+
+import ij.Prefs;
+import ij.plugin.Colors;
+import ij.util.Java2;
+import ij.util.Tools;
 
 
  /** Displays a dialog that allows the user to select a color using three sliders. */

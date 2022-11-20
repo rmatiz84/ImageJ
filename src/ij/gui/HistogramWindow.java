@@ -1,16 +1,38 @@
 package ij.gui;
 
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.io.*;
-import java.awt.datatransfer.*;
-import java.util.ArrayList;
-import ij.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.Rectangle;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.ColorModel;
+import java.io.CharArrayWriter;
+import java.io.PrintWriter;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.LookUpTable;
+import ij.WindowManager;
+import ij.measure.Calibration;
+import ij.measure.Measurements;
+import ij.measure.ResultsTable;
 import ij.plugin.filter.Analyzer;
-import ij.text.TextWindow;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ImageStatistics;
+import ij.process.LUT;
 
 /** This class is an extended ImageWindow that displays histograms. */
 public class HistogramWindow extends ImageWindow implements Measurements, ActionListener, 

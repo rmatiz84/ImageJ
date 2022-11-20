@@ -1,9 +1,15 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
+import java.awt.AWTEvent;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
 import ij.plugin.frame.ThresholdAdjuster;
-import java.awt.*;
+import ij.process.ByteProcessor;
+import ij.process.FloodFiller;
+import ij.process.ImageProcessor;
 
 /** Implements the Erode, Dilate, Open, Close, Outline, Skeletonize
     and Fill Holes commands in the Process/Binary submenu. 

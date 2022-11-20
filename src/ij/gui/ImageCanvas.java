@@ -1,23 +1,47 @@
 package ij.gui;
 
-import java.awt.*;
-import java.util.Properties;
-import java.awt.image.*;
-import ij.process.*;
-import ij.measure.*;
-import ij.plugin.*;
+import java.awt.BasicStroke;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Event;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.MenuItem;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.image.IndexColorModel;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.Menus;
+import ij.Prefs;
+import ij.macro.MacroRunner;
+import ij.measure.ResultsTable;
+import ij.plugin.PointToolOptions;
+import ij.plugin.WandToolOptions;
 import ij.plugin.frame.Recorder;
 import ij.plugin.frame.RoiManager;
-import ij.plugin.filter.Analyzer;
 import ij.plugin.tool.PlugInTool;
-import ij.macro.*;
-import ij.*;
-import ij.util.*;
-import ij.text.*;
-import java.awt.event.*;
-import java.util.*;
-import java.awt.geom.*;
-import java.util.concurrent.atomic.AtomicBoolean;
+import ij.process.FloatPolygon;
+import ij.util.Tools;
 
 
 /** This is a Canvas used to display images in a Window. */

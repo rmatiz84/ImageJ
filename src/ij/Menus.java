@@ -1,18 +1,41 @@
 package ij;
-import ij.process.*;
-import ij.util.*;
+import java.applet.Applet;
+import java.awt.CheckboxMenuItem;
+import java.awt.Dialog;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GraphicsEnvironment;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.MenuShortcut;
+import java.awt.PopupMenu;
+import java.awt.Window;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.image.IndexColorModel;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Vector;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
 import ij.gui.ImageWindow;
 import ij.plugin.MacroInstaller;
-import ij.gui.Toolbar;
-import ij.macro.Interpreter;
-import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.util.*;
-import java.io.*;
-import java.applet.Applet;
-import java.awt.event.*;
-import java.util.zip.*;
+import ij.process.ImageProcessor;
+import ij.util.StringSorter;
 
 /**
 This class installs and updates ImageJ's menus. Note that menu labels,

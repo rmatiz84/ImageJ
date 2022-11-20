@@ -1,22 +1,51 @@
 package ij.gui;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Canvas;
+import java.awt.CheckboxMenuItem;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Event;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.Polygon;
+import java.awt.PopupMenu;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import java.io.File;
-import java.util.Timer;
-import java.util.Hashtable;
-import java.util.TimerTask;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.Locale;
-import ij.*;
-import ij.plugin.frame.*;
-import ij.plugin.MacroInstaller;
-import ij.plugin.RectToolOptions;
-import ij.plugin.tool.PlugInTool;
-import ij.plugin.tool.MacroToolRunner;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
+
+import ij.IJ;
+import ij.IJEventListener;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.Menus;
+import ij.Prefs;
+import ij.WindowManager;
 import ij.macro.Program;
+import ij.plugin.MacroInstaller;
+import ij.plugin.frame.ColorPicker;
+import ij.plugin.frame.Editor;
+import ij.plugin.frame.Recorder;
+import ij.plugin.tool.MacroToolRunner;
+import ij.plugin.tool.PlugInTool;
 
 /** The ImageJ toolbar. */
 public class Toolbar extends Canvas implements MouseListener, MouseMotionListener, ItemListener, ActionListener {

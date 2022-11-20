@@ -1,18 +1,47 @@
 package ij.gui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.awt.datatransfer.*;
-import java.util.*;
-import ij.*;
-import ij.process.*;
-import ij.util.*;
-import ij.text.TextWindow;
-import ij.plugin.filter.Analyzer;
-import ij.plugin.filter.PlugInFilterRunner;
-import ij.measure.*;
+import java.awt.Button;
+import java.awt.CheckboxMenuItem;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Event;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.Label;
+import java.awt.LayoutManager;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.Window;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.WindowEvent;
+import java.io.CharArrayWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Properties;
+
+import ij.IJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.WindowManager;
 import ij.io.SaveDialog;
+import ij.measure.ResultsTable;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
+import ij.util.Tools;
 
 /** This class implements the Analyze/Plot Profile command.
 * @author Michael Schmid

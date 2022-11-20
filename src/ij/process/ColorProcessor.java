@@ -1,9 +1,19 @@
 package ij.process;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.image.*;
-import ij.gui.*;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferInt;
+import java.awt.image.DirectColorModel;
+import java.awt.image.IndexColorModel;
+import java.awt.image.PixelGrabber;
+import java.awt.image.Raster;
+import java.awt.image.SampleModel;
+import java.awt.image.WritableRaster;
+
 import ij.ImageStack;
 
 /**

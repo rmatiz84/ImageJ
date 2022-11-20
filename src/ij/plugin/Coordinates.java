@@ -1,10 +1,15 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.measure.Calibration;
-import ij.plugin.frame.Recorder;
 import java.awt.AWTEvent;
 import java.awt.geom.Rectangle2D;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
+import ij.gui.Roi;
+import ij.measure.Calibration;
+import ij.plugin.frame.Recorder;
 
 /**
  * The plugin implements the Image/Adjust/Coordinates command. It allows

@@ -1,12 +1,36 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.measure.*;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Label;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.TextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
+import java.util.Vector;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.Line;
+import ij.gui.NewImage;
+import ij.gui.PolygonRoi;
+import ij.gui.Roi;
+import ij.measure.Calibration;
+import ij.measure.ResultsTable;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
 import ij.util.Tools;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
 
 /** Implements the Image/Stacks/Reslice command. Known shortcomings: 
 	for FREELINE or POLYLINE ROI, spatial calibration is ignored: 

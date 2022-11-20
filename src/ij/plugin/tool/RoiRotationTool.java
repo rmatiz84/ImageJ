@@ -6,13 +6,16 @@
  */
 
 package ij.plugin.tool;
-import ij.*;
-import ij.gui.*;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageRoi;
+import ij.gui.Roi;
 import ij.plugin.RoiRotator;
-import ij.plugin.tool.PlugInTool;
 import ij.plugin.frame.Recorder;
-import java.awt.*;
-import java.awt.event.*;
 
 public class RoiRotationTool extends PlugInTool {
 	ImageCanvas ic = null;

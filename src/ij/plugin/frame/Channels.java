@@ -1,12 +1,33 @@
 package ij.plugin.frame;
-import ij.*;
-import ij.plugin.*;
-import ij.gui.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.Choice;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.MenuItem;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.HTMLDialog;
+import ij.gui.TrimmedButton;
 
 /** Displays the ImageJ "Channels" dialog. */
-public class Channels extends PlugInDialog implements PlugIn, ItemListener, ActionListener {
+public class Channels extends PlugInDialog implements  ItemListener, ActionListener {
 
 	private static final String[] modes = {"Composite", "Color", "Grayscale", "---------",
 		"Composite Max", "Composite Min", "Composite Invert"};

@@ -1,8 +1,14 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import java.awt.*;
+import java.awt.Color;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.gui.Toolbar;
+import ij.process.ImageProcessor;
 
 /**
 	This plugin implements the Image/Stacks/Combine command.

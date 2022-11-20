@@ -1,9 +1,17 @@
  package ij.process;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.image.*;
-import ij.gui.*;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.DataBufferUShort;
+import java.awt.image.IndexColorModel;
+import java.awt.image.Raster;
+import java.awt.image.SampleModel;
+import java.awt.image.WritableRaster;
+import java.util.Random;
 
 /** ShortProcessors contain a 16-bit unsigned image
 	and methods that operate on that image. */
@@ -13,7 +21,6 @@ public class ShortProcessor extends ImageProcessor {
 	private short[] pixels;
 	private byte[] pixels8;
 	private short[] snapshotPixels;
-	private byte[] LUT;
 	private boolean fixedScale;
 	private int bgValue;
 
@@ -439,13 +446,11 @@ public class ShortProcessor extends ImageProcessor {
 	}
 
 	void getRow2(int x, int y, int[] data, int length) {
-		int value;
 		for (int i=0; i<length; i++)
 			data[i] = pixels[y*width+x+i]&0xffff;
 	}
 	
 	void putColumn2(int x, int y, int[] data, int length) {
-		int value;
 		for (int i=0; i<length; i++)
 			pixels[(y+i)*width+x] = (short)data[i];
 	}

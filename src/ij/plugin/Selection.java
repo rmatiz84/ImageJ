@@ -1,16 +1,44 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
-import ij.plugin.frame.*;
-import ij.macro.Interpreter;
-import ij.plugin.filter.*;
-import ij.util.Tools;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.util.Vector;
-import java.awt.geom.*;
+import java.awt.geom.Rectangle2D;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.Prefs;
+import ij.Undo;
+import ij.WindowManager;
+import ij.gui.EllipseRoi;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.Line;
+import ij.gui.OvalRoi;
+import ij.gui.PointRoi;
+import ij.gui.PolygonRoi;
+import ij.gui.Roi;
+import ij.gui.RoiProperties;
+import ij.gui.RotatedRectRoi;
+import ij.gui.ShapeRoi;
+import ij.gui.Toolbar;
+import ij.macro.Interpreter;
+import ij.measure.Calibration;
+import ij.measure.Measurements;
+import ij.plugin.filter.EDM;
+import ij.plugin.filter.GaussianBlur;
+import ij.plugin.frame.LineWidthAdjuster;
+import ij.plugin.frame.Recorder;
+import ij.plugin.frame.RoiManager;
+import ij.process.Blitter;
+import ij.process.ByteProcessor;
+import ij.process.FloatPolygon;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ImageStatistics;
 
 
 /** This plugin implements the commands in the Edit/Selection submenu. */

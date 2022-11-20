@@ -1,10 +1,20 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Macro;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.PlotCanvas;
+import ij.gui.Roi;
 import ij.plugin.frame.Recorder;
-import java.awt.*;
 
 /** This plugin implements the commands in the Image/Zoom submenu. */
 public class Zoom implements PlugIn {

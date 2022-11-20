@@ -1,10 +1,11 @@
 package ij.gui;
 
-import java.awt.*;
-import ij.process.*;
-import ij.*;
-import ij.util.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+
+import ij.ImagePlus;
 
 
 /** This subclass of ImageCanvas has special provisions for plots:

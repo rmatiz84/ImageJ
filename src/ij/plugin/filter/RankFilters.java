@@ -1,14 +1,27 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
+import java.awt.AWTEvent;
+import java.awt.Rectangle;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerArray;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.Prefs;
+import ij.gui.DialogListener;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.Roi;
 import ij.plugin.ContrastEnhancer;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
 import ij.util.ThreadUtil;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Arrays;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.*;
 
 
 /** This plugin implements the Mean, Minimum, Maximum, Variance, Median,

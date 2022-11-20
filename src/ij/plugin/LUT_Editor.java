@@ -1,14 +1,31 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.image.IndexColorModel;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.ColorChooser;
+import ij.gui.GenericDialog;
+import ij.measure.Calibration;
+import ij.measure.SplineFitter;
 import ij.plugin.frame.Recorder;
-import java.awt.*;
-import java.awt.image.*;
-import ij.util.*;
-import ij.measure.*;
-import java.util.Vector;
-import java.awt.event.*;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
+import ij.process.LUT;
 
 public class LUT_Editor implements PlugIn, ActionListener{
     private ImagePlus imp;

@@ -1,11 +1,15 @@
 package ij.plugin;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.util.Tools;
+import java.awt.AWTEvent;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.OvalRoi;
+import ij.gui.Roi;
 import ij.measure.Calibration;
 
 /**

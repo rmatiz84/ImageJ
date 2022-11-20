@@ -1,15 +1,31 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
-import ij.io.*;
-import ij.plugin.Animator;
-import ij.util.Tools;
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.TextField;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.IndexColorModel;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.util.Vector;
+
 import javax.imageio.ImageIO;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.Macro;
+import ij.Prefs;
+import ij.VirtualStack;
+import ij.WindowManager;
+import ij.gui.GenericDialog;
+import ij.io.FileInfo;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ShortProcessor;
 
 /** <pre>
  * ImageJ Plugin for reading an AVI file into an image stack

@@ -1,9 +1,13 @@
 package ij.plugin.filter;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.AWTEvent;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Undo;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.Overlay;
+import ij.process.ImageProcessor;
 
 
 /** This plugin implements the Image/Translate command. */

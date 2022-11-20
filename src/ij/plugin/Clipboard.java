@@ -1,15 +1,20 @@
 package ij.plugin; 
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.datatransfer.*;
-import java.awt.image.*;
-import java.io.*;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.image.BufferedImage;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.Roi;
 import ij.plugin.frame.Editor;
 import ij.plugin.frame.Recorder;
-import ij.text.TextWindow;
+import ij.process.ImageProcessor;
 import ij.util.Tools;
 	
 /**	Copies/pastes images to/from the system clipboard. */

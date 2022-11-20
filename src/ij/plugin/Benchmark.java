@@ -1,8 +1,12 @@
 package ij.plugin;
-import ij.*;
-import ij.process.*;
-import ij.gui.*;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.Overlay;
 import ij.measure.ResultsTable;
+import ij.process.ImageProcessor;
+import ij.process.ImageStatistics;
 import ij.util.Tools;
 
 /** Implements the Plugins/Utilities/Run Benchmark command.

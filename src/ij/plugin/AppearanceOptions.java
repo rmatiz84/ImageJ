@@ -1,12 +1,22 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import ij.process.*;
-import ij.io.*;
-import ij.plugin.filter.*;
-import ij.plugin.frame.*;
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Font;
+
+import ij.CompositeImage;
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImagePlus;
+import ij.Menus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GenericDialog;
+import ij.gui.ImageWindow;
 import ij.measure.Calibration;
-import java.awt.*;
+import ij.plugin.frame.ContrastAdjuster;
+import ij.plugin.frame.Recorder;
+import ij.process.LUT;
 
 /** This plugin implements the Edit/Options/Appearance command. */
 public class AppearanceOptions implements PlugIn, DialogListener {

@@ -1,8 +1,13 @@
 package ij.process;
 
-import java.util.*;
-import java.awt.*;
-import java.awt.image.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferByte;
+import java.awt.image.IndexColorModel;
+import java.awt.image.Raster;
+import java.awt.image.SampleModel;
 
 
 /** This is an extended ColorProcessor that supports signed 32-bit int images. */

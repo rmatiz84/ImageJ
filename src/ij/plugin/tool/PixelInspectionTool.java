@@ -1,15 +1,39 @@
 package ij.plugin.tool;
-import ij.*;
-import ij.plugin.frame.PlugInFrame;
-import ij.process.*;
-import ij.measure.*;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import ij.IJ;
+import ij.ImageJ;
+import ij.ImageListener;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.ImageCanvas;
+import ij.gui.ImageWindow;
+import ij.gui.Overlay;
+import ij.gui.Roi;
+import ij.measure.Calibration;
+import ij.measure.Measurements;
 import ij.plugin.filter.Analyzer;
-import ij.gui.*;
+import ij.plugin.frame.PlugInFrame;
+import ij.process.ByteProcessor;
+import ij.process.ColorProcessor;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import ij.process.ShortProcessor;
 import ij.util.Tools;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.datatransfer.*;
-import java.awt.geom.*;
 
 /**
  * This plugin continuously displays the pixel values of the cursor and

@@ -1,7 +1,8 @@
 package ij;
-import ij.io.*;
-import java.awt.*;
-import java.io.*;
+import java.awt.Menu;
+import java.awt.MenuItem;
+
+import ij.io.Opener;
 
 /** Opens, in a separate thread, files selected from the File/Open Recent submenu.*/
 public class RecentOpener implements Runnable {

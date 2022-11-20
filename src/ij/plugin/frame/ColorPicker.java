@@ -1,12 +1,30 @@
 package ij.plugin.frame;
-import ij.*;
-import ij.plugin.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Panel;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.TextField;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.Vector;
+
 import javax.swing.BoxLayout;
-import ij.process.*;
-import ij.gui.*;
+
+import ij.IJ;
+import ij.IJEventListener;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.ColorChooser;
+import ij.gui.GUI;
+import ij.gui.Toolbar;
+import ij.plugin.Colors;
+import ij.process.ColorProcessor;
 
 /** Implements the Image/Color/Color Picker command. */
 public class ColorPicker extends PlugInDialog {

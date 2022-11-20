@@ -1,9 +1,10 @@
 package ij.plugin.tool;
+import java.awt.event.MouseEvent;
+
 import ij.ImagePlus;
-import ij.plugin.PlugIn;
-import ij.macro.Program;
 import ij.gui.Toolbar;
-import java.awt.event.*;
+import ij.macro.Program;
+import ij.plugin.PlugIn;
 
 public abstract class PlugInTool implements PlugIn {
 

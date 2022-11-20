@@ -1,8 +1,22 @@
 package ij.plugin;
-import ij.*;
-import ij.gui.*;
-import java.awt.*;
-import java.util.*;
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+import java.util.ArrayList;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.Prefs;
+import ij.WindowManager;
+import ij.gui.DialogListener;
+import ij.gui.GUI;
+import ij.gui.GenericDialog;
+import ij.gui.Roi;
+import ij.gui.TextRoi;
+import ij.gui.Toolbar;
 
 /** This plugin implements the Edit/Options/Fonts command and 
 	the dialog displayed when you double click on the text tool. */
