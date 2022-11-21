@@ -7,7 +7,7 @@ import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.Roi;
 import ij.io.OpenDialog;
-import ij.io.RoiDecoder;
+import ij.io.RoiMaster;
 import ij.process.ByteProcessor;
 import ij.process.ImageProcessor;
 
@@ -37,7 +37,7 @@ public class RoiReader implements PlugIn {
 
 	public void openRoi(String dir, String name) throws IOException {
 		String path = dir+name;
-		RoiDecoder rd = new RoiDecoder(path);
+		RoiMaster rd = new RoiMaster(path);
 		Roi roi = rd.getRoi();
 		Rectangle r = roi.getBounds();
 		ImagePlus img = WindowManager.getCurrentImage();

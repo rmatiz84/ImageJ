@@ -129,7 +129,7 @@ public class FileSaver {
 			Plot plot = (Plot)(imp.getProperty(Plot.PROPERTY_KEY));
 			fi.plot = plot.toByteArray();
 		}
-		fi.roi = RoiEncoder.saveAsByteArray(imp.getRoi());
+		fi.roi = RoiMaster.saveAsByteArray(imp.getRoi());
 		fi.overlay = getOverlay(imp);
 		fi.properties = imp.getPropertiesAsArray();
 		DataOutputStream out = null;
@@ -184,7 +184,7 @@ public class FileSaver {
 			Roi roi = overlay.get(i);
 			if (i==0)
 				roi.setPrototypeOverlay(overlay);
-			array[i] = RoiEncoder.saveAsByteArray(roi);
+			array[i] = RoiMaster.saveAsByteArray(roi);
 		}
 		return array;
 	}
@@ -220,7 +220,7 @@ public class FileSaver {
 			fi.sliceLabels = labels;
 		} else
 			fi.sliceLabels = imp.getStack().getSliceLabels();
-		fi.roi = RoiEncoder.saveAsByteArray(imp.getRoi());
+		fi.roi = RoiMaster.saveAsByteArray(imp.getRoi());
 		fi.overlay = getOverlay(imp);
 		fi.properties = imp.getPropertiesAsArray();
 		if (imp.isComposite()) saveDisplayRangesAndLuts(imp, fi);
@@ -255,7 +255,7 @@ public class FileSaver {
 			Plot plot = (Plot)(imp.getProperty(Plot.PROPERTY_KEY));
 			fi.plot = plot.toByteArray();
 		}
-		fi.roi = RoiEncoder.saveAsByteArray(imp.getRoi());
+		fi.roi = RoiMaster.saveAsByteArray(imp.getRoi());
 		fi.overlay = getOverlay(imp);
 		if (imp.isComposite()) saveDisplayRangesAndLuts(imp, fi);
 		ByteArrayOutputStream out = null;
@@ -323,7 +323,7 @@ public class FileSaver {
 			Plot plot = (Plot)(imp.getProperty(Plot.PROPERTY_KEY));
 			fi.plot = plot.toByteArray();
 		}
-		fi.roi = RoiEncoder.saveAsByteArray(imp.getRoi());
+		fi.roi = RoiMaster.saveAsByteArray(imp.getRoi());
 		fi.overlay = getOverlay(imp);
 		fi.sliceLabels = imp.getStack().getSliceLabels();
 		if (imp.isComposite()) saveDisplayRangesAndLuts(imp, fi);

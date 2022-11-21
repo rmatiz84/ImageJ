@@ -1184,7 +1184,7 @@ public class Opener {
 	/** Attempts to open the specified ROI, returning null if unsuccessful. */
 	public Roi openRoi(String path) {
 		Roi roi = null;
-		RoiDecoder rd = new RoiDecoder(path);
+		RoiMaster rd = new RoiMaster(path);
 		try {roi = rd.getRoi();}
 		catch (IOException e) {
 			IJ.error("RoiDecoder", e.getMessage());

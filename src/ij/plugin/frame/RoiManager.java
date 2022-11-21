@@ -73,8 +73,7 @@ import ij.gui.Toolbar;
 import ij.gui.YesNoCancelDialog;
 import ij.io.OpenDialog;
 import ij.io.Opener;
-import ij.io.RoiDecoder;
-import ij.io.RoiEncoder;
+import ij.io.RoiMaster;
 import ij.io.SaveDialog;
 import ij.macro.Interpreter;
 import ij.macro.MacroRunner;
@@ -940,7 +939,7 @@ public class RoiManager extends PlugInFrame implements ActionListener, ItemListe
 						out.write(buf, 0, len);
 					out.close();
 					byte[] bytes = out.toByteArray();
-					RoiDecoder rd = new RoiDecoder(bytes, name);
+					RoiMaster rd = new RoiMaster(bytes, name);
 					Roi roi = rd.getRoi();
 					if (roi!=null) {
 						name = name.substring(0, name.length()-4);
@@ -1005,7 +1004,7 @@ public class RoiManager extends PlugInFrame implements ActionListener, ItemListe
 			listModel.setElementAt(newName, indexes[0]);
 			path = dir+name2;
 		}
-		RoiEncoder re = new RoiEncoder(path);
+		RoiMaster re = new RoiMaster(path);
 		errorMessage = null;
 		try {
 			re.write(roi);
@@ -1044,7 +1043,7 @@ public class RoiManager extends PlugInFrame implements ActionListener, ItemListe
 		try {
 			ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(path)));
 			out = new DataOutputStream(new BufferedOutputStream(zos));
-			RoiEncoder re = new RoiEncoder(out);
+			RoiMaster re = new RoiMaster(out);
 			for (int i=0; i<indexes.length; i++) {
 				IJ.showProgress(i, indexes.length);
 				String label = getUniqueName(names, indexes[i]);

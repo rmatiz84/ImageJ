@@ -5,7 +5,7 @@ import java.io.IOException;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.gui.Roi;
-import ij.io.RoiEncoder;
+import ij.io.RoiMaster;
 import ij.io.SaveDialog;
 import ij.process.ImageProcessor;
 
@@ -45,7 +45,7 @@ public class RoiWriter implements PlugInFilter {
 		if (name == null)
 			return;
 		String dir = sd.getDirectory();
-		RoiEncoder re = new RoiEncoder(dir+name);
+		RoiMaster re = new RoiMaster(dir+name);
 		re.write(roi);
 		if (name.endsWith(".roi"))
 			name = name.substring(0, name.length()-4);
