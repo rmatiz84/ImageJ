@@ -55,6 +55,7 @@ import ij.gui.Roi;
 import ij.gui.Toolbar;
 import ij.gui.Wand;
 import ij.gui.YesNoCancelDialog;
+import ij.io.Constants;
 import ij.io.DirectoryChooser;
 import ij.io.FileInfo;
 import ij.io.FileMaster;
@@ -2236,7 +2237,7 @@ public class IJ {
 		else
 			ok = fs.saveAsTiff(path);
 		if (ok)
-			fs.updateImagePlus(path, FileInfo.TIFF);
+			fs.updateImagePlus(path, Constants.TIFF);
 		return ok;
 	}
 	

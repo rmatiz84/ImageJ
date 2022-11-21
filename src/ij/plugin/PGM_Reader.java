@@ -9,6 +9,7 @@ import java.io.StreamTokenizer;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.OpenDialog;
 import ij.process.ByteProcessor;
@@ -100,7 +101,7 @@ public class PGM_Reader extends ImagePlus implements PlugIn {
         }
         setStack(name, stack);
         FileInfo fi = new FileInfo();
-        fi.fileFormat = FileInfo.PGM;
+        fi.fileFormat = Constants.PGM;
         fi.directory = directory;
         fi.fileName = name;
         setFileInfo(fi);

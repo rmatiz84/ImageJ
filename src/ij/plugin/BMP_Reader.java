@@ -11,6 +11,7 @@ import java.io.InputStream;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.OpenDialog;
 import ij.io.Opener;
@@ -64,7 +65,7 @@ public class BMP_Reader extends ImagePlus implements PlugIn {
                 if (mis==null) IJ.log("BMP_Reader: mis=null");
                 Image img = Toolkit.getDefaultToolkit().createImage(mis);
                 FileInfo fi = new FileInfo();
-                fi.fileFormat = FileInfo.BMP;
+                fi.fileFormat = Constants.BMP;
                 fi.fileName = name;
                 fi.directory = directory;
                 setImage(img);

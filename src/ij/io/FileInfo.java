@@ -6,90 +6,6 @@ import ij.VirtualStack;
 
 /** This class consists of public fields that describe an image file. */
 public class FileInfo implements Cloneable {
-
-	/** 8-bit unsigned integer (0-255). */
-	public static final int GRAY8 = 0;
-	
-	/**	16-bit signed integer (-32768-32767). Imported signed images
-		are converted to unsigned by adding 32768. */
-	public static final int GRAY16_SIGNED = 1;
-	
-	/** 16-bit unsigned integer (0-65535). */
-	public static final int GRAY16_UNSIGNED = 2;
-	
-	/**	32-bit signed integer. Imported 32-bit integer images are
-		converted to floating-point. */
-	public static final int GRAY32_INT = 3;
-	
-	/** 32-bit floating-point. */
-	public static final int GRAY32_FLOAT = 4;
-	
-	/** 8-bit unsigned integer with color lookup table. */
-	public static final int COLOR8 = 5;
-	
-	/** 24-bit interleaved RGB. Import/export only. */
-	public static final int RGB = 6;	
-	
-	/** 24-bit planer RGB. Import only. */
-	public static final int RGB_PLANAR = 7;
-	
-	/** 1-bit black and white. Import only. */
-	public static final int BITMAP = 8;
-	
-	/** 32-bit interleaved ARGB. Import only. */
-	public static final int ARGB = 9;
-	
-	/** 24-bit interleaved BGR. Import only. */
-	public static final int BGR = 10;
-	
-	/**	32-bit unsigned integer. Imported 32-bit integer images are
-		converted to floating-point. */
-	public static final int GRAY32_UNSIGNED = 11;
-	
-	/** 48-bit interleaved RGB. */
-	public static final int RGB48 = 12;	
-
-	/** 12-bit unsigned integer (0-4095). Import only. */
-	public static final int GRAY12_UNSIGNED = 13;	
-
-	/** 24-bit unsigned integer. Import only. */
-	public static final int GRAY24_UNSIGNED = 14;	
-
-	/** 32-bit interleaved BARG (MCID). Import only. */
-	public static final int BARG  = 15;	
-
-	/** 64-bit floating-point. Import only.*/
-	public static final int GRAY64_FLOAT  = 16;	
-
-	/** 48-bit planar RGB. Import only. */
-	public static final int RGB48_PLANAR = 17;	
-
-	/** 32-bit interleaved ABGR. Import only. */
-	public static final int ABGR = 18;
-
-	/** 32-bit interleaved CMYK. Import only. */
-	public static final int CMYK = 19;
-
-	// File formats
-	public static final int UNKNOWN = 0;
-	public static final int RAW = 1;
-	public static final int TIFF = 2;
-	public static final int GIF_OR_JPG = 3;
-	public static final int FITS = 4;
-	public static final int BMP = 5;
-	public static final int DICOM = 6;
-	public static final int ZIP_ARCHIVE = 7;
-	public static final int PGM = 8;
-	public static final int IMAGEIO = 9;
-
-	// Compression modes
-	public static final int COMPRESSION_UNKNOWN = 0;
-	public static final int COMPRESSION_NONE= 1;
-	public static final int LZW = 2;
-	public static final int LZW_WITH_DIFFERENCING = 3;
-	public static final int JPEG = 4;
-	public static final int PACK_BITS = 5;
-	public static final int ZIP = 6;
 	
 	/* File format (TIFF, GIF_OR_JPG, BMP, etc.). Used by the File/Revert command */
 	public int fileFormat;
@@ -151,13 +67,13 @@ public class FileInfo implements Cloneable {
 	/** Creates a FileInfo object with all of its fields set to their default value. */
      public FileInfo() {
     	// assign default values
-    	fileFormat = UNKNOWN;
-    	fileType = GRAY8;
+    	fileFormat = Constants.UNKNOWN;
+    	fileType = Constants.GRAY8;
     	fileName = "Untitled";
     	directory = "";
     	url = "";
 	    nImages = 1;
-		compression = COMPRESSION_NONE;
+		compression = Constants.COMPRESSION_NONE;
 		samplesPerPixel = 1;
     }
     
@@ -183,12 +99,12 @@ public class FileInfo implements Cloneable {
 	/** Returns the number of bytes used per pixel. */
 	public int getBytesPerPixel() {
 		switch (fileType) {
-			case GRAY8: case COLOR8: case BITMAP: return 1;
-			case GRAY16_SIGNED: case GRAY16_UNSIGNED: case GRAY12_UNSIGNED: return 2;
-			case GRAY32_INT: case GRAY32_UNSIGNED: case GRAY32_FLOAT: case ARGB: case GRAY24_UNSIGNED: case BARG: case ABGR: case CMYK: return 4;
-			case RGB: case RGB_PLANAR: case BGR: return 3;
-			case RGB48: case RGB48_PLANAR: return 6;
-			case GRAY64_FLOAT : return 8;
+			case Constants.GRAY8: case Constants.COLOR8: case Constants.BITMAP: return 1;
+			case Constants.GRAY16_SIGNED: case Constants.GRAY16_UNSIGNED: case Constants.GRAY12_UNSIGNED: return 2;
+			case Constants.GRAY32_INT: case Constants.GRAY32_UNSIGNED: case Constants.GRAY32_FLOAT: case Constants.ARGB: case Constants.GRAY24_UNSIGNED: case Constants.BARG: case Constants.ABGR: case Constants.CMYK: return 4;
+			case Constants.RGB: case Constants.RGB_PLANAR: case Constants.BGR: return 3;
+			case Constants.RGB48: case Constants.RGB48_PLANAR: return 6;
+			case Constants.GRAY64_FLOAT : return 8;
 			default: return 0;
 		}
 	}
@@ -217,13 +133,13 @@ public class FileInfo implements Cloneable {
     public String getCode() {
     	String code = "fi = new FileInfo();\n";
     	String type = null;
-    	if (fileType==GRAY8)
+    	if (fileType==Constants.GRAY8)
     		type = "GRAY8";
-    	else if (fileType==GRAY16_UNSIGNED)
+    	else if (fileType==Constants.GRAY16_UNSIGNED)
     		type = "GRAY16_UNSIGNED";
-    	else if (fileType==GRAY32_FLOAT)
+    	else if (fileType==Constants.GRAY32_FLOAT)
     		type = "GRAY32_FLOAT";
-    	else if (fileType==RGB)
+    	else if (fileType==Constants.RGB)
     		type = "RGB";
     	if (type!=null)
     		code += "fi.fileType = FileInfo."+type+";\n"; 
@@ -240,24 +156,24 @@ public class FileInfo implements Cloneable {
 
     private String getType() {
     	switch (fileType) {
-			case GRAY8: return "byte";
-			case GRAY16_SIGNED: return "short";
-			case GRAY16_UNSIGNED: return "ushort";
-			case GRAY32_INT: return "int";
-			case GRAY32_UNSIGNED: return "uint";
-			case GRAY32_FLOAT: return "float";
-			case COLOR8: return "byte(lut)";
-			case RGB: return "RGB";
-			case RGB_PLANAR: return "RGB(p)";
-			case RGB48: return "RGB48";
-			case BITMAP: return "bitmap";
-			case ARGB: return "ARGB";
-			case ABGR: return "ABGR";
-			case BGR: return "BGR";
-			case BARG: return "BARG";
-			case CMYK: return "CMYK";
-			case GRAY64_FLOAT: return "double";
-			case RGB48_PLANAR: return "RGB48(p)";
+			case Constants.GRAY8: return "byte";
+			case Constants.GRAY16_SIGNED: return "short";
+			case Constants.GRAY16_UNSIGNED: return "ushort";
+			case Constants.GRAY32_INT: return "int";
+			case Constants.GRAY32_UNSIGNED: return "uint";
+			case Constants.GRAY32_FLOAT: return "float";
+			case Constants.COLOR8: return "byte(lut)";
+			case Constants.RGB: return "RGB";
+			case Constants.RGB_PLANAR: return "RGB(p)";
+			case Constants.RGB48: return "RGB48";
+			case Constants.BITMAP: return "bitmap";
+			case Constants.ARGB: return "ARGB";
+			case Constants.ABGR: return "ABGR";
+			case Constants.BGR: return "BGR";
+			case Constants.BARG: return "BARG";
+			case Constants.CMYK: return "CMYK";
+			case Constants.GRAY64_FLOAT: return "double";
+			case Constants.RGB48_PLANAR: return "RGB48(p)";
 			default: return "";
     	}
     }

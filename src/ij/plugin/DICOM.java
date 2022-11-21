@@ -11,6 +11,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.Macro;
 import ij.Prefs;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.FileMaster;
 import ij.io.OpenDialog;
@@ -137,7 +138,7 @@ public class DICOM extends ImagePlus implements PlugIn {
 					ImageStatistics stats = imp.getRawStatistics();
 					imp.setDisplayRange(stats.min,stats.max);
 				}
-			} else if (fi.fileType==FileInfo.GRAY16_SIGNED) {
+			} else if (fi.fileType==Constants.GRAY16_SIGNED) {
 				if (dd.rescaleIntercept!=0.0 && (dd.rescaleSlope==1.0||Prefs.fixedDicomScaling)) {
 					double[] coeff = new double[2];
 					coeff[0] = dd.rescaleSlope*(-32768) + dd.rescaleIntercept;
@@ -145,7 +146,7 @@ public class DICOM extends ImagePlus implements PlugIn {
 					imp.getCalibration().setFunction(Calibration.STRAIGHT_LINE, coeff, "Gray Value");
 				}
 			} else if (dd.rescaleIntercept!=0.0 && 
-					  (dd.rescaleSlope==1.0||Prefs.fixedDicomScaling||fi.fileType==FileInfo.GRAY8)) {
+					  (dd.rescaleSlope==1.0||Prefs.fixedDicomScaling||fi.fileType==Constants.GRAY8)) {
 				double[] coeff = new double[2];
 				coeff[0] = dd.rescaleIntercept;
 				coeff[1] = dd.rescaleSlope;
@@ -220,7 +221,7 @@ public class DICOM extends ImagePlus implements PlugIn {
 			ip.resetMinAndMax();
 			Calibration cal = imp.getCalibration();
 			cal.setFunction(Calibration.NONE, null, "Gray Value");
-			fi.fileType = FileInfo.GRAY16_UNSIGNED;
+			fi.fileType = Constants.GRAY16_UNSIGNED;
 		}
 	}
 	
@@ -534,7 +535,7 @@ class DicomDecoder {
 		long skipCount;
 		FileInfo fi = new FileInfo();
 		int bitsAllocated = 16;
-		fi.fileFormat = fi.RAW;
+		fi.fileFormat = Constants.RAW;
 		fi.fileName = fileName;
 		if (directory.indexOf("://")>0) { // is URL
 			URL u = new URL(directory+fileName);
@@ -548,8 +549,8 @@ class DicomDecoder {
 		fi.height = 0;
 		fi.offset = 0;
 		fi.intelByteOrder = true;
-		fi.fileType = FileInfo.GRAY16_UNSIGNED;
-		fi.fileFormat = FileInfo.DICOM;
+		fi.fileType = Constants.GRAY16_UNSIGNED;
+		fi.fileFormat = Constants.DICOM;
 		int samplesPerPixel = 1;
 		int planarConfiguration = 0;
 		String photoInterpretation = "";
@@ -653,15 +654,15 @@ class DicomDecoder {
 				case BITS_ALLOCATED:
 					bitsAllocated = getShort();
 					if (bitsAllocated==8)
-						fi.fileType = FileInfo.GRAY8;
+						fi.fileType = Constants.GRAY8;
 					else if (bitsAllocated==32)
-						fi.fileType = FileInfo.GRAY32_UNSIGNED;
+						fi.fileType = Constants.GRAY32_UNSIGNED;
 					addInfo(tag, bitsAllocated);
 					break;
 				case PIXEL_REPRESENTATION:
 					int pixelRepresentation = getShort();
 					if (pixelRepresentation==1) {
-						fi.fileType = FileInfo.GRAY16_SIGNED;
+						fi.fileType = Constants.GRAY16_SIGNED;
 						signed = true;
 					}
 					addInfo(tag, pixelRepresentation);
@@ -703,7 +704,7 @@ class DicomDecoder {
 					addInfo(tag, elementLength/2);
 					break;
 				case FLOAT_PIXEL_DATA:
-					fi.fileType = FileInfo.GRAY32_FLOAT;
+					fi.fileType = Constants.GRAY32_FLOAT;
 					// continue without break
 				case PIXEL_DATA:
 					// Start of image data...
@@ -727,24 +728,24 @@ class DicomDecoder {
 			}
 		} // while(decodingTags)
 		
-		if (fi.fileType==FileInfo.GRAY8) {
+		if (fi.fileType==Constants.GRAY8) {
 			if (fi.reds!=null && fi.greens!=null && fi.blues!=null
 			&& fi.reds.length==fi.greens.length
 			&& fi.reds.length==fi.blues.length) {
-				fi.fileType = FileInfo.COLOR8;
+				fi.fileType = Constants.COLOR8;
 				fi.lutSize = fi.reds.length;
 				
 			}
 		}
 				
-		if (fi.fileType==FileInfo.GRAY32_UNSIGNED && signed)
-			fi.fileType = FileInfo.GRAY32_INT;
+		if (fi.fileType==Constants.GRAY32_UNSIGNED && signed)
+			fi.fileType = Constants.GRAY32_INT;
 
 		if (samplesPerPixel==3 && photoInterpretation.startsWith("RGB")) {
 			if (planarConfiguration==0)
-				fi.fileType = FileInfo.RGB;
+				fi.fileType = Constants.RGB;
 			else if (planarConfiguration==1)
-				fi.fileType = FileInfo.RGB_PLANAR;
+				fi.fileType = Constants.RGB_PLANAR;
 		} else if (photoInterpretation.endsWith("1 "))
 				fi.whiteIsZero = true;
 				

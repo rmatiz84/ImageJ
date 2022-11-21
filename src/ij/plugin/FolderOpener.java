@@ -19,6 +19,7 @@ import ij.VirtualStack;
 import ij.gui.GenericDialog;
 import ij.gui.Overlay;
 import ij.gui.Roi;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.Opener;
 import ij.measure.Calibration;
@@ -415,7 +416,7 @@ public class FolderOpener implements PlugIn, TextListener {
 				imp2.getProcessor().setMinAndMax(min, max);
 			if (fi==null)
 				fi = new FileInfo();
-			fi.fileFormat = FileInfo.UNKNOWN;
+			fi.fileFormat = Constants.UNKNOWN;
 			fi.fileName = "";
 			fi.directory = directory;
 			imp2.setFileInfo(fi); // saves FileInfo of the first image
@@ -549,7 +550,7 @@ public class FolderOpener implements PlugIn, TextListener {
 			}
 		} else {
 			FileInfo fi = info[0];
-			if (fi.fileType==FileInfo.RGB48) {
+			if (fi.fileType==Constants.RGB48) {
 				for (int slice=1; slice<=3; slice++) {
 					FileInfo fi2 = (FileInfo)fi.clone();
 					fi2.sliceNumber = slice;

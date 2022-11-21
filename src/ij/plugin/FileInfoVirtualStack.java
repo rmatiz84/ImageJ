@@ -7,6 +7,7 @@ import ij.CompositeImage;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.VirtualStack;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.FileMaster;
 import ij.io.OpenDialog;
@@ -109,7 +110,7 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 		int n = fi.nImages;
 		if (info.length==1 && n>1) {
 			long bytesPerImage = fi.width*fi.height*fi.getBytesPerPixel();
-			if (fi.fileType==FileInfo.GRAY12_UNSIGNED)
+			if (fi.fileType==Constants.GRAY12_UNSIGNED)
 				bytesPerImage = (int)(1.5*fi.width)*fi.height;
 			n = validateNImages(fi, bytesPerImage);
 			info = new FileInfo[n];
@@ -122,7 +123,7 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 		nImages = info.length;
 		FileMaster fo = new FileMaster(info[0]);
 		ImagePlus imp = fo.openImage();
-		if (nImages==1 && fi.fileType==FileInfo.RGB48)
+		if (nImages==1 && fi.fileType==Constants.RGB48)
 			return imp;
 		Properties props = fo.decodeDescriptionString(fi);
 		ImagePlus imp2 = new ImagePlus(fi.fileName, this);
@@ -215,7 +216,7 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 			IJ.log("FileInfoVirtualStack: "+n+", offset="+info[n-1].getOffset()+", "+(System.currentTimeMillis()-t0)+"ms");
 		} else {
 			FileMaster fo = new FileMaster(info[n-1]);
-			if (info[n-1].fileType==FileInfo.RGB48) {
+			if (info[n-1].fileType==Constants.RGB48) {
 				ImagePlus imp = fo.openImage();
 				if (info[n-1].sliceNumber>0)
 					imp.setSlice(info[n-1].sliceNumber);

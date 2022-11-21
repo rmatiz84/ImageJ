@@ -718,7 +718,7 @@ public class Opener {
 			if (imp.getType()==ImagePlus.COLOR_RGB)
 				convertGrayJpegTo8Bits(imp);
 			FileInfo fi = new FileInfo();
-			fi.fileFormat = fi.GIF_OR_JPG;
+			fi.fileFormat = Constants.GIF_OR_JPG;
 			fi.fileName = name;
 			fi.directory = dir;
 			imp.setFileInfo(fi);
@@ -780,7 +780,7 @@ public class Opener {
 		}
 		imp = new ImagePlus(f.getName(), img);
 		FileInfo fi = new FileInfo();
-		fi.fileFormat = fi.IMAGEIO;
+		fi.fileFormat = Constants.IMAGEIO;
 		fi.fileName = f.getName();
 		String parent = f.getParent();
 		if (parent!=null)
@@ -810,7 +810,7 @@ public class Opener {
 				&& info[i].height==info[0].height;
 			contiguous &= info[i].getOffset()==startingOffset+i*size;
 		}
-		if (contiguous &&  info[0].fileType!=FileInfo.RGB48)
+		if (contiguous &&  info[0].fileType!=Constants.RGB48)
 			info[0].nImages = info.length;
 		//if (IJ.debugMode) {
 		//	IJ.log("sameSizeAndType: " + sameSizeAndType);
@@ -833,10 +833,10 @@ public class Opener {
 			Object pixels = null;
 			long skip = fi.getOffset();
 			int imageSize = fi.width*fi.height*fi.getBytesPerPixel();
-			if (info[0].fileType==FileInfo.GRAY12_UNSIGNED) {
+			if (info[0].fileType==Constants.GRAY12_UNSIGNED) {
 				imageSize = (int)(fi.width*fi.height*1.5);
 				if ((imageSize&1)==1) imageSize++; // add 1 if odd
-			} if (info[0].fileType==FileInfo.BITMAP) {
+			} if (info[0].fileType==Constants.BITMAP) {
 				int scan=(int)Math.ceil(fi.width/8.0);
 				imageSize = scan*fi.height;
 			}
@@ -872,13 +872,13 @@ public class Opener {
 					loc += imageSize*nChannels+skip;
 					if (i<(info.length-1)) {
 						skip = info[i+1].getOffset()-loc;
-						if (info[i+1].compression>=FileInfo.LZW) skip = 0;
+						if (info[i+1].compression>=Constants.LZW) skip = 0;
 						if (skip<0L) {
 							IJ.error("Opener", "Unexpected image offset");
 							break;
 						}
 					}
-					if (fi.fileType==FileInfo.RGB48) {
+					if (fi.fileType==Constants.RGB48) {
 						Object[] pixels2 = (Object[])pixels;
 						stack.addSlice(null, pixels2[0]);					
 						stack.addSlice(null, pixels2[1]);					
@@ -906,8 +906,8 @@ public class Opener {
 			IJ.showProgress(1.0);
 			if (stack.size()==0)
 				return null;
-			if (fi.fileType==FileInfo.GRAY16_UNSIGNED||fi.fileType==FileInfo.GRAY12_UNSIGNED
-			||fi.fileType==FileInfo.GRAY32_FLOAT||fi.fileType==FileInfo.RGB48) {
+			if (fi.fileType==Constants.GRAY16_UNSIGNED||fi.fileType==Constants.GRAY12_UNSIGNED
+			||fi.fileType==Constants.GRAY32_FLOAT||fi.fileType==Constants.RGB48) {
 				ImageProcessor ip = stack.getProcessor(1);
 				ip.resetMinAndMax();
 				stack.update(ip);
@@ -1070,7 +1070,7 @@ public class Opener {
 		File f = new File(path);
 		FileInfo fi = imp.getOriginalFileInfo();
 		if (fi!=null) {
-			fi.fileFormat = FileInfo.ZIP_ARCHIVE;
+			fi.fileFormat = Constants.ZIP_ARCHIVE;
 			fi.fileName = f.getName();
 			String parent = f.getParent();
 			if (parent!=null)
@@ -1439,7 +1439,7 @@ public class Opener {
 				return null;
 			else {
 				InputStream is = new FileInputStream(f);
-				if (fi.compression>=FileInfo.LZW || (fi.stripOffsets!=null&&fi.stripOffsets.length>1))
+				if (fi.compression>=Constants.LZW || (fi.stripOffsets!=null&&fi.stripOffsets.length>1))
 					is = new RandomAccessStream(is);
 				return is;
 			}

@@ -185,7 +185,7 @@ public class ImportDialog {
 			if (imp.getBitDepth()==16 || imp.getBitDepth()==32)
 				imp.getProcessor().setMinAndMax(min, max);
                 Calibration cal = imp.getCalibration();
-                if (fi.fileType==FileInfo.GRAY16_SIGNED)
+                if (fi.fileType==Constants.GRAY16_SIGNED)
                 	cal.setSigned16BitCalibration();
 			imp.show();
 		}
@@ -242,7 +242,7 @@ public class ImportDialog {
 			return null;
 		String imageType = types[choiceSelection];
 		FileInfo fi = new FileInfo();
-		fi.fileFormat = fi.RAW;
+		fi.fileFormat = Constants.RAW;
 		fi.fileName = fileName;
 		directory = IJ.addSeparator(directory);
 		fi.directory = directory;
@@ -258,35 +258,35 @@ public class ImportDialog {
 		fi.intelByteOrder = intelByteOrder;
 		fi.whiteIsZero = whiteIsZero;
 		if (imageType.equals("8-bit"))
-			fi.fileType = FileInfo.GRAY8;
+			fi.fileType = Constants.GRAY8;
 		else if (imageType.equals("16-bit Signed"))
-			fi.fileType = FileInfo.GRAY16_SIGNED;
+			fi.fileType = Constants.GRAY16_SIGNED;
 		else if (imageType.equals("16-bit Unsigned"))
-			fi.fileType = FileInfo.GRAY16_UNSIGNED;
+			fi.fileType = Constants.GRAY16_UNSIGNED;
 		else if (imageType.equals("32-bit Signed"))
-			fi.fileType = FileInfo.GRAY32_INT;
+			fi.fileType = Constants.GRAY32_INT;
 		else if (imageType.equals("32-bit Unsigned"))
-			fi.fileType = FileInfo.GRAY32_UNSIGNED;
+			fi.fileType = Constants.GRAY32_UNSIGNED;
 		else if (imageType.equals("32-bit Real"))
-			fi.fileType = FileInfo.GRAY32_FLOAT;
+			fi.fileType = Constants.GRAY32_FLOAT;
 		else if (imageType.equals("64-bit Real"))
-			fi.fileType = FileInfo.GRAY64_FLOAT;
+			fi.fileType = Constants.GRAY64_FLOAT;
 		else if (imageType.equals("24-bit RGB"))
-			fi.fileType = FileInfo.RGB;
+			fi.fileType = Constants.RGB;
 		else if (imageType.equals("24-bit RGB Planar"))
-			fi.fileType = FileInfo.RGB_PLANAR;
+			fi.fileType = Constants.RGB_PLANAR;
 		else if (imageType.equals("24-bit BGR"))
-			fi.fileType = FileInfo.BGR;
+			fi.fileType = Constants.BGR;
 		else if (imageType.equals("24-bit Integer"))
-			fi.fileType = FileInfo.GRAY24_UNSIGNED;
+			fi.fileType = Constants.GRAY24_UNSIGNED;
 		else if (imageType.equals("32-bit ARGB"))
-			fi.fileType = FileInfo.ARGB;
+			fi.fileType = Constants.ARGB;
 		else if (imageType.equals("32-bit ABGR"))
-			fi.fileType = FileInfo.ABGR;
+			fi.fileType = Constants.ABGR;
 		else if (imageType.equals("1-bit Bitmap"))
-			fi.fileType = FileInfo.BITMAP;
+			fi.fileType = Constants.BITMAP;
 		else
-			fi.fileType = FileInfo.GRAY8;
+			fi.fileType = Constants.GRAY8;
 		if (IJ.debugMode) IJ.log("ImportDialog: "+fi);
 		lastFileInfo = (FileInfo)fi.clone();
 		return fi;

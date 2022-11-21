@@ -82,7 +82,7 @@ public class FileMaster {
 		FileInfo ofi = null;
 		if (imp!=null) ofi = imp.getOriginalFileInfo();
 		boolean validName = ofi!=null && imp.getTitle().equals(ofi.fileName);
-		if (validName && ofi.fileFormat==FileInfo.TIFF && ofi.directory!=null && !ofi.directory.equals("") && (ofi.url==null||ofi.url.equals(""))) {
+		if (validName && ofi.fileFormat==Constants.TIFF && ofi.directory!=null && !ofi.directory.equals("") && (ofi.url==null||ofi.url.equals(""))) {
             name = imp.getTitle();
             directory = ofi.directory;
 			String path = directory+name;
@@ -166,7 +166,7 @@ public class FileMaster {
 			if (out!=null)
 				try {out.close();} catch (IOException e) {}
 		}
-		updateImp(fi, FileInfo.TIFF);
+		updateImp(fi, Constants.TIFF);
 		return true;
 	}
 	
@@ -258,7 +258,7 @@ public class FileMaster {
 			if (out!=null)
 				try {out.close();} catch (IOException e) {}
 		}
-		updateImp(fi, FileInfo.TIFF);
+		updateImp(fi, Constants.TIFF);
 		return true;
 	}
 	
@@ -366,7 +366,7 @@ public class FileMaster {
 			if (out!=null)
 				try {out.close();} catch (IOException e) {}
 		}
-		updateImp(fi, FileInfo.TIFF);
+		updateImp(fi, Constants.TIFF);
 		return true;
 	}
 
@@ -392,7 +392,7 @@ public class FileMaster {
 		false if the image is not 8-bits or there is an I/O error. */
 	public boolean saveAsGif(String path) {
 		IJ.runPlugIn(imp, "ij.plugin.GifWriter", path);
-		updateImp(fi, FileInfo.GIF_OR_JPG);
+		updateImp(fi, Constants.GIF_OR_JPG);
 		return true;
 	}
 
@@ -422,7 +422,7 @@ public class FileMaster {
 	public boolean saveAsJpeg(String path) {
 		String err = JpegWriter.save(imp, path, jpegQuality);
 		if (err==null && !(imp.getType()==ImagePlus.GRAY16 || imp.getType()==ImagePlus.GRAY32))
-			updateImp(fi, FileInfo.GIF_OR_JPG);
+			updateImp(fi, Constants.GIF_OR_JPG);
 		return true;
 	}
 
@@ -439,7 +439,7 @@ public class FileMaster {
 	/** Save the image in BMP format using the specified path. */
 	public boolean saveAsBmp(String path) {
 		IJ.runPlugIn(imp, "ij.plugin.BMP_Writer", path);
-		updateImp(fi, FileInfo.BMP);
+		updateImp(fi, Constants.BMP);
 		return true;
 	}
 
@@ -462,7 +462,7 @@ public class FileMaster {
 		using the specified path. */
 	public boolean saveAsPgm(String path) {
 		IJ.runPlugIn(imp, "ij.plugin.PNM_Writer", path);
-		updateImp(fi, FileInfo.PGM);
+		updateImp(fi, Constants.PGM);
 		return true;
 	}
 
@@ -479,7 +479,7 @@ public class FileMaster {
 	/** Save the image in PNG format using the specified path. */
 	public boolean saveAsPng(String path) {
 		IJ.runPlugIn(imp, "ij.plugin.PNG_Writer", path);
-		updateImp(fi, FileInfo.IMAGEIO);
+		updateImp(fi, Constants.IMAGEIO);
 		return true;
 	}
 
@@ -498,7 +498,7 @@ public class FileMaster {
 	public boolean saveAsFits(String path) {
 		if (!okForFits(imp)) return false;
 		IJ.runPlugIn(imp, "ij.plugin.FITS_Writer", path);
-		updateImp(fi, FileInfo.FITS);
+		updateImp(fi, Constants.FITS);
 		return true;
 	}
 
@@ -554,7 +554,7 @@ public class FileMaster {
 			for (int i=0; i<n; i++)
 			pixels[i] = (short)(pixels[i]+32768);
 		}
-		updateImp(fi, fi.RAW);
+		updateImp(fi, Constants.RAW);
 		return true;
 	}
 
@@ -601,7 +601,7 @@ public class FileMaster {
 					pixels[i] = (short)(pixels[i]+32768);
 			}
 		}
-		updateImp(fi, fi.RAW);
+		updateImp(fi, Constants.RAW);
 		return true;
 	}
 
@@ -748,7 +748,7 @@ public class FileMaster {
 		Calibration cal = imp.getCalibration();
 		StringBuffer sb = new StringBuffer(100);
 		sb.append("ImageJ="+ImageJ.VERSION+"\n");
-		if (fi.nImages>1 && fi.fileType!=FileInfo.RGB48)
+		if (fi.nImages>1 && fi.fileType!=Constants.RGB48)
 			sb.append("images="+fi.nImages+"\n");
 		int channels = imp.getNChannels();
 		if (channels>1)
@@ -918,49 +918,49 @@ public class FileMaster {
 		if (fi.nImages>1)
 			return openStack(cm, show);
 		switch (fi.fileType) {
-			case FileInfo.GRAY8:
-			case FileInfo.COLOR8:
-			case FileInfo.BITMAP:
+			case Constants.GRAY8:
+			case Constants.COLOR8:
+			case Constants.BITMAP:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 				ip = new ByteProcessor(width, height, (byte[])pixels, cm);
     			imp = new ImagePlus(fi.fileName, ip);
 				break;
-			case FileInfo.GRAY16_SIGNED:
-			case FileInfo.GRAY16_UNSIGNED:
-			case FileInfo.GRAY12_UNSIGNED:
+			case Constants.GRAY16_SIGNED:
+			case Constants.GRAY16_UNSIGNED:
+			case Constants.GRAY12_UNSIGNED:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 	    		ip = new ShortProcessor(width, height, (short[])pixels, cm);
        			imp = new ImagePlus(fi.fileName, ip);
 				break;
-			case FileInfo.GRAY32_INT:
-			case FileInfo.GRAY32_UNSIGNED:
-			case FileInfo.GRAY32_FLOAT:
-			case FileInfo.GRAY24_UNSIGNED:
-			case FileInfo.GRAY64_FLOAT:
+			case Constants.GRAY32_INT:
+			case Constants.GRAY32_UNSIGNED:
+			case Constants.GRAY32_FLOAT:
+			case Constants.GRAY24_UNSIGNED:
+			case Constants.GRAY64_FLOAT:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 	    		ip = new FloatProcessor(width, height, (float[])pixels, cm);
        			imp = new ImagePlus(fi.fileName, ip);
 				break;
-			case FileInfo.RGB:
-			case FileInfo.BGR:
-			case FileInfo.ARGB:
-			case FileInfo.ABGR:
-			case FileInfo.BARG:
-			case FileInfo.RGB_PLANAR:
-			case FileInfo.CMYK:
+			case Constants.RGB:
+			case Constants.BGR:
+			case Constants.ARGB:
+			case Constants.ABGR:
+			case Constants.BARG:
+			case Constants.RGB_PLANAR:
+			case Constants.CMYK:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 				ip = new ColorProcessor(width, height, (int[])pixels);
-				if (fi.fileType==FileInfo.CMYK)
+				if (fi.fileType==Constants.CMYK)
 					ip.invert();
 				imp = new ImagePlus(fi.fileName, ip);
 				break;
-			case FileInfo.RGB48:
-			case FileInfo.RGB48_PLANAR:
-				boolean planar = fi.fileType==FileInfo.RGB48_PLANAR;
+			case Constants.RGB48:
+			case Constants.RGB48_PLANAR:
+				boolean planar = fi.fileType==Constants.RGB48_PLANAR;
 				Object[] pixelArray = (Object[])readPixels(fi);
 				if (pixelArray==null) return null;
 				int nChannels = 3;
@@ -1026,40 +1026,40 @@ public class FileMaster {
 		ImageProcessor ip = null;		
 		ColorModel cm = createColorModel(fi);
 		switch (fi.fileType) {
-			case FileInfo.GRAY8:
-			case FileInfo.COLOR8:
-			case FileInfo.BITMAP:
+			case Constants.GRAY8:
+			case Constants.COLOR8:
+			case Constants.BITMAP:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 				ip = new ByteProcessor(width, height, (byte[])pixels, cm);
 				break;
-			case FileInfo.GRAY16_SIGNED:
-			case FileInfo.GRAY16_UNSIGNED:
-			case FileInfo.GRAY12_UNSIGNED:
+			case Constants.GRAY16_SIGNED:
+			case Constants.GRAY16_UNSIGNED:
+			case Constants.GRAY12_UNSIGNED:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 	    		ip = new ShortProcessor(width, height, (short[])pixels, cm);
 				break;
-			case FileInfo.GRAY32_INT:
-			case FileInfo.GRAY32_UNSIGNED:
-			case FileInfo.GRAY32_FLOAT:
-			case FileInfo.GRAY24_UNSIGNED:
-			case FileInfo.GRAY64_FLOAT:
+			case Constants.GRAY32_INT:
+			case Constants.GRAY32_UNSIGNED:
+			case Constants.GRAY32_FLOAT:
+			case Constants.GRAY24_UNSIGNED:
+			case Constants.GRAY64_FLOAT:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 	    		ip = new FloatProcessor(width, height, (float[])pixels, cm);
 				break;
-			case FileInfo.RGB:
-			case FileInfo.BGR:
-			case FileInfo.ARGB:
-			case FileInfo.ABGR:
-			case FileInfo.BARG:
-			case FileInfo.RGB_PLANAR:
-			case FileInfo.CMYK:
+			case Constants.RGB:
+			case Constants.BGR:
+			case Constants.ARGB:
+			case Constants.ABGR:
+			case Constants.BARG:
+			case Constants.RGB_PLANAR:
+			case Constants.CMYK:
 				pixels = readPixels(fi);
 				if (pixels==null) return null;
 				ip = new ColorProcessor(width, height, (int[])pixels);
-				if (fi.fileType==FileInfo.CMYK)
+				if (fi.fileType==Constants.CMYK)
 					ip.invert();
 				break;
 		}
@@ -1196,32 +1196,32 @@ public class FileMaster {
 			ColorModel cm = createColorModel(fi);
 			ImageProcessor ip = null;
 			switch (fi.fileType) {
-				case FileInfo.GRAY8:
-				case FileInfo.COLOR8:
-				case FileInfo.BITMAP:
+				case Constants.GRAY8:
+				case Constants.COLOR8:
+				case Constants.BITMAP:
 					ip = new ByteProcessor(width, height, (byte[])pixels, cm);
 					imp.setProcessor(null, ip);
 					break;
-				case FileInfo.GRAY16_SIGNED:
-				case FileInfo.GRAY16_UNSIGNED:
-				case FileInfo.GRAY12_UNSIGNED:
+				case Constants.GRAY16_SIGNED:
+				case Constants.GRAY16_UNSIGNED:
+				case Constants.GRAY12_UNSIGNED:
 					ip = new ShortProcessor(width, height, (short[])pixels, cm);
 					imp.setProcessor(null, ip);
 					break;
-				case FileInfo.GRAY32_INT:
-				case FileInfo.GRAY32_FLOAT:
+				case Constants.GRAY32_INT:
+				case Constants.GRAY32_FLOAT:
 					ip = new FloatProcessor(width, height, (float[])pixels, cm);
 					imp.setProcessor(null, ip);
 					break;
-				case FileInfo.RGB:
-				case FileInfo.BGR:
-				case FileInfo.ARGB:
-				case FileInfo.ABGR:
-				case FileInfo.RGB_PLANAR:
+				case Constants.RGB:
+				case Constants.BGR:
+				case Constants.ARGB:
+				case Constants.ABGR:
+				case Constants.RGB_PLANAR:
 					Image img = Toolkit.getDefaultToolkit().createImage(new MemoryImageSource(width, height, (int[])pixels, 0, width));
 					imp.setImage(img);
 					break;
-				case FileInfo.CMYK:
+				case Constants.CMYK:
 					ip = new ColorProcessor(width, height, (int[])pixels);
 					ip.invert();
 					imp.setProcessor(null, ip);
@@ -1231,7 +1231,7 @@ public class FileMaster {
 	}
 	
 	void setCalibration(ImagePlus imp) {
-		if (fi.fileType==FileInfo.GRAY16_SIGNED) {
+		if (fi.fileType==Constants.GRAY16_SIGNED) {
 			if (IJ.debugMode) IJ.log("16-bit signed");
  			imp.getLocalCalibration().setSigned16BitCalibration();
 		}
@@ -1368,14 +1368,14 @@ public class FileMaster {
 			if (fi.directory!=null && fi.directory.length()>0 && !(fi.directory.endsWith(Prefs.separator)||fi.directory.endsWith("/")))
 				fi.directory += Prefs.separator;
 		    File f = new File(fi.getFilePath());
-		    if (gzip) fi.compression = FileInfo.COMPRESSION_UNKNOWN;
+		    if (gzip) fi.compression = Constants.COMPRESSION_UNKNOWN;
 		    if (f==null || !f.exists() || f.isDirectory() || !validateFileInfo(f, fi))
 		    	is = null;
 		    else
 				is = new FileInputStream(f);
 		}
 		if (is!=null) {
-			if (fi.compression>=FileInfo.LZW)
+			if (fi.compression>=Constants.LZW)
 				is = new RandomAccessStream(is);
 			else if (gzip)
 				is = new GZIPInputStream(is, 50000);
@@ -1396,7 +1396,7 @@ public class FileMaster {
 		   error("Offset is negative.", fi, offset, length);
 		   return false;
 		}
-		if (fi.fileType==FileInfo.BITMAP || fi.compression!=FileInfo.COMPRESSION_NONE)
+		if (fi.fileType==Constants.BITMAP || fi.compression!=Constants.COMPRESSION_NONE)
 			return true;
 		length = f.length();
 		long size = fi.width*fi.height*fi.getBytesPerPixel();

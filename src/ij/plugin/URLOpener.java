@@ -19,6 +19,7 @@ import ij.Menus;
 import ij.Prefs;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.Opener;
 import ij.plugin.frame.Editor;
@@ -53,7 +54,7 @@ public class URLOpener implements PlugIn {
 					Opener.convertGrayJpegTo8Bits(imp);
 				WindowManager.checkForDuplicateName = true;
 				FileInfo fi = imp.getOriginalFileInfo();
-				if (fi!=null && fi.fileType==FileInfo.RGB48)
+				if (fi!=null && fi.fileType==Constants.RGB48)
 					imp = new CompositeImage(imp, IJ.COMPOSITE);
 				else if (imp.getNChannels()>1 && fi!=null && fi.description!=null && fi.description.indexOf("mode=")!=-1) {
 					int mode = IJ.COLOR;
@@ -100,7 +101,7 @@ public class URLOpener implements PlugIn {
 			ImagePlus imp = new ImagePlus(url);
 			WindowManager.checkForDuplicateName = true;
 			FileInfo fi = imp.getOriginalFileInfo();
-			if (fi!=null && fi.fileType==FileInfo.RGB48)
+			if (fi!=null && fi.fileType==Constants.RGB48)
 				imp = new CompositeImage(imp, IJ.COMPOSITE);
 			else if (imp.getNChannels()>1 && fi!=null && fi.description!=null && fi.description.indexOf("mode=")!=-1) {
 				int mode = IJ.COLOR;

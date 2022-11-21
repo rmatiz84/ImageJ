@@ -281,8 +281,8 @@ public class ImageWriter {
 		if (fi.width*fi.height*fi.getBytesPerPixel()<26214400)
 			showProgressBar = false; // don't show progress bar if image<25MB
 		switch (fi.fileType) {
-			case FileInfo.GRAY8:
-			case FileInfo.COLOR8:
+			case Constants.GRAY8:
+			case Constants.COLOR8:
 				if (fi.nImages>1 && fi.virtualStack!=null)
 					write8BitVirtualStack(out, fi.virtualStack);
 				else if (fi.nImages>1)
@@ -290,8 +290,8 @@ public class ImageWriter {
 				else
 					write8BitImage(out, (byte[])fi.pixels);
 				break;
-			case FileInfo.GRAY16_SIGNED:
-			case FileInfo.GRAY16_UNSIGNED:
+			case Constants.GRAY16_SIGNED:
+			case Constants.GRAY16_UNSIGNED:
 				if (fi.nImages>1 && fi.virtualStack!=null)
 					write16BitVirtualStack(out, fi.virtualStack);
 				else if (fi.nImages>1)
@@ -299,10 +299,10 @@ public class ImageWriter {
 				else
 					write16BitImage(out, (short[])fi.pixels);
 				break;
-			case FileInfo.RGB48:
+			case Constants.RGB48:
 				writeRGB48Image(out, (Object[])fi.pixels);
 				break;
-			case FileInfo.GRAY32_FLOAT:
+			case Constants.GRAY32_FLOAT:
 				if (fi.nImages>1 && fi.virtualStack!=null)
 					writeFloatVirtualStack(out, fi.virtualStack);
 				else if (fi.nImages>1)
@@ -310,7 +310,7 @@ public class ImageWriter {
 				else
 					writeFloatImage(out, (float[])fi.pixels);
 				break;
-			case FileInfo.RGB:
+			case Constants.RGB:
 				if (fi.nImages>1 && fi.virtualStack!=null)
 					writeRGBVirtualStack(out, fi.virtualStack);
 				else if (fi.nImages>1)

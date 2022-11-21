@@ -42,6 +42,7 @@ import ij.gui.ShapeRoi;
 import ij.gui.StackWindow;
 import ij.gui.TextRoi;
 import ij.gui.Toolbar;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.FileMaster;
 import ij.io.Opener;
@@ -2327,7 +2328,7 @@ public class ImagePlus implements ImageObserver, Measurements, Cloneable {
 			return;
 		}
 		FileInfo fi = getOriginalFileInfo();
-		boolean isFileInfo = fi!=null && fi.fileFormat!=FileInfo.UNKNOWN;
+		boolean isFileInfo = fi!=null && fi.fileFormat!=Constants.UNKNOWN;
 		if (!isFileInfo && url==null)
 			return;
 		if (fi.directory==null && url==null)
@@ -2439,19 +2440,19 @@ public class ImagePlus implements ImageObserver, Measurements, Cloneable {
 				LookUpTable lut = createLut();
 				boolean customLut = !lut.isGrayscale() || (ip!=null&&!ip.isDefaultLut());
 				if (imageType==COLOR_256 || customLut)
-					fi.fileType = FileInfo.COLOR8;
+					fi.fileType = Constants.COLOR8;
 				else
-					fi.fileType = FileInfo.GRAY8;
+					fi.fileType = Constants.GRAY8;
 				addLut(lut, fi);
 				break;
 	    	case GRAY16:
 	    		if (compositeImage && fi.nImages==3) {
 	    			if ("Red".equals(getStack().getSliceLabel(1)))
-						fi.fileType = fi.RGB48;
+						fi.fileType = Constants.RGB48;
 					else
-						fi.fileType = fi.GRAY16_UNSIGNED;
+						fi.fileType = Constants.GRAY16_UNSIGNED;
 				} else
-					fi.fileType = fi.GRAY16_UNSIGNED;
+					fi.fileType = Constants.GRAY16_UNSIGNED;
 				if (!compositeImage) {
     				lut = createLut();
     				if (!lut.isGrayscale() || (ip!=null&&!ip.isDefaultLut()))
@@ -2459,7 +2460,7 @@ public class ImagePlus implements ImageObserver, Measurements, Cloneable {
 				}
 				break;
 	    	case GRAY32:
-				fi.fileType = fi.GRAY32_FLOAT;
+				fi.fileType = Constants.GRAY32_FLOAT;
 				if (!compositeImage) {
     				lut = createLut();
     				if (!lut.isGrayscale() || (ip!=null&&!ip.isDefaultLut()))
@@ -2467,7 +2468,7 @@ public class ImagePlus implements ImageObserver, Measurements, Cloneable {
 				}
 				break;
 	    	case COLOR_RGB:
-				fi.fileType = fi.RGB;
+				fi.fileType = Constants.RGB;
 				break;
 			default:
     	}

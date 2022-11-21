@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import ij.ImagePlus;
 import ij.ImageStack;
+import ij.io.Constants;
 import ij.io.FileInfo;
 import ij.io.OpenDialog;
 import ij.io.Opener;
@@ -49,7 +50,7 @@ public class GIF_Reader extends ImagePlus implements PlugIn {
 				Opener.convertGrayJpegTo8Bits(this);
 		}
 		FileInfo fi = new FileInfo();
-		fi.fileFormat = fi.GIF_OR_JPG;
+		fi.fileFormat = Constants.GIF_OR_JPG;
 		fi.fileName = name;
 		fi.directory = dir;
 		setFileInfo(fi);

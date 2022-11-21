@@ -183,8 +183,8 @@ public class TiffMaster {
 			sum += fi.blues[i];
 			j += 2;
 		}
-		if (sum!=0 && fi.fileType==FileInfo.GRAY8)
-			fi.fileType = FileInfo.COLOR8;
+		if (sum!=0 && fi.fileType==Constants.GRAY8)
+			fi.fileType = Constants.COLOR8;
 	}
 	
 	byte[] getString(int count, long offset) throws IOException {
@@ -216,7 +216,7 @@ public class TiffMaster {
             if (index2>0) {
                 String images = id.substring(index1+7,index2);
                 int n = (int)Tools.parseDouble(images, 0.0);
-                if (n>1 && fi.compression==FileInfo.COMPRESSION_NONE)
+                if (n>1 && fi.compression==Constants.COMPRESSION_NONE)
                 	fi.nImages = n;
             }
         }
@@ -296,7 +296,7 @@ public class TiffMaster {
 			
 		in.seek(offset+260);
 		int nImages = in.readShort();
-		if (nImages>=2 && (fi.fileType==FileInfo.GRAY8||fi.fileType==FileInfo.COLOR8)) {
+		if (nImages>=2 && (fi.fileType==Constants.GRAY8||fi.fileType==Constants.COLOR8)) {
 			fi.nImages = nImages;
 			fi.pixelDepth = in.readFloat();	//SliceSpacing
 			int skip = in.readShort();		//CurrentSlice
@@ -376,7 +376,7 @@ public class TiffMaster {
 		if ((ifdCount%50)==0 && ifdCount>0)
 			ij.IJ.showStatus("Opening IFDs: "+ifdCount);
 		FileInfo fi = new FileInfo();
-		fi.fileType = FileInfo.BITMAP;  //BitsPerSample defaults to 1
+		fi.fileType = Constants.BITMAP;  //BitsPerSample defaults to 1
 		for (int i=0; i<nEntries; i++) {
 			tag = getShort();
 			fieldType = getShort();
@@ -430,15 +430,15 @@ public class TiffMaster {
 				case BITS_PER_SAMPLE:
 						if (count==1) {
 							if (value==8)
-								fi.fileType = FileInfo.GRAY8;
+								fi.fileType = Constants.GRAY8;
 							else if (value==16)
-								fi.fileType = FileInfo.GRAY16_UNSIGNED;
+								fi.fileType = Constants.GRAY16_UNSIGNED;
 							else if (value==32)
-								fi.fileType = FileInfo.GRAY32_INT;
+								fi.fileType = Constants.GRAY32_INT;
 							else if (value==12)
-								fi.fileType = FileInfo.GRAY12_UNSIGNED;
+								fi.fileType = Constants.GRAY12_UNSIGNED;
 							else if (value==1)
-								fi.fileType = FileInfo.BITMAP;
+								fi.fileType = Constants.BITMAP;
 							else
 								error("Unsupported BitsPerSample: " + value);
 						} else if (count>1) {
@@ -446,9 +446,9 @@ public class TiffMaster {
 							in.seek(lvalue);
 							int bitDepth = getShort();
 							if (bitDepth==8)
-								fi.fileType = FileInfo.GRAY8;
+								fi.fileType = Constants.GRAY8;
 							else if (bitDepth==16)
-								fi.fileType = FileInfo.GRAY16_UNSIGNED;
+								fi.fileType = Constants.GRAY16_UNSIGNED;
 							else
 								error("ImageJ cannot open interleaved "+bitDepth+"-bit images.");
 							in.seek(saveLoc);
@@ -456,14 +456,14 @@ public class TiffMaster {
 						break;
 				case SAMPLES_PER_PIXEL:
 					fi.samplesPerPixel = value;
-					if (value==3 && fi.fileType==FileInfo.GRAY8)
-						fi.fileType = FileInfo.RGB;
-					else if (value==3 && fi.fileType==FileInfo.GRAY16_UNSIGNED)
-						fi.fileType = FileInfo.RGB48;
-					else if (value==4 && fi.fileType==FileInfo.GRAY8)
-						fi.fileType = photoInterp==5?FileInfo.CMYK:FileInfo.ARGB;
-					else if (value==4 && fi.fileType==FileInfo.GRAY16_UNSIGNED) {
-						fi.fileType = FileInfo.RGB48;
+					if (value==3 && fi.fileType==Constants.GRAY8)
+						fi.fileType = Constants.RGB;
+					else if (value==3 && fi.fileType==Constants.GRAY16_UNSIGNED)
+						fi.fileType = Constants.RGB48;
+					else if (value==4 && fi.fileType==Constants.GRAY8)
+						fi.fileType = photoInterp==5?Constants.CMYK:Constants.ARGB;
+					else if (value==4 && fi.fileType==Constants.GRAY16_UNSIGNED) {
+						fi.fileType = Constants.RGB48;
 						if (photoInterp==5)  //assume cmyk
 							fi.whiteIsZero = true;
 					}
@@ -492,10 +492,10 @@ public class TiffMaster {
 						fi.unit = "cm";
 					break;
 				case PLANAR_CONFIGURATION:  // 1=chunky, 2=planar
-					if (value==2 && fi.fileType==FileInfo.RGB48)
-							 fi.fileType = FileInfo.RGB48_PLANAR;
-					else if (value==2 && fi.fileType==FileInfo.RGB)
-						fi.fileType = FileInfo.RGB_PLANAR;
+					if (value==2 && fi.fileType==Constants.RGB48)
+							 fi.fileType = Constants.RGB48_PLANAR;
+					else if (value==2 && fi.fileType==Constants.RGB)
+						fi.fileType = Constants.RGB_PLANAR;
 					else if (value!=2 && !(fi.samplesPerPixel==1||fi.samplesPerPixel==3||fi.samplesPerPixel==4)) {
 						String msg = "Unsupported SamplesPerPixel: " + fi.samplesPerPixel;
 						error(msg);
@@ -503,17 +503,17 @@ public class TiffMaster {
 					break;
 				case COMPRESSION:
 					if (value==5)  {// LZW compression
-						fi.compression = FileInfo.LZW;
-						if (fi.fileType==FileInfo.GRAY12_UNSIGNED)
+						fi.compression = Constants.LZW;
+						if (fi.fileType==Constants.GRAY12_UNSIGNED)
 							error("ImageJ cannot open 12-bit LZW-compressed TIFFs");
 					} else if (value==32773)  // PackBits compression
-						fi.compression = FileInfo.PACK_BITS;
+						fi.compression = Constants.PACK_BITS;
 					else if (value==32946 || value==8) //8=Adobe deflate
-						fi.compression = FileInfo.ZIP;
+						fi.compression = Constants.ZIP;
 					else if (value!=1 && value!=0 && !(value==7&&fi.width<500)) {
 						// don't abort with Spot camera compressed (7) thumbnails
 						// otherwise, this is an unknown compression type
-						fi.compression = FileInfo.COMPRESSION_UNKNOWN;
+						fi.compression = Constants.COMPRESSION_UNKNOWN;
 						error("ImageJ cannot open TIFF files " +
 							"compressed in this fashion ("+value+")");
 					}
@@ -526,8 +526,8 @@ public class TiffMaster {
 					}
 					break;
 				case PREDICTOR:
-					if (value==2 && fi.compression==FileInfo.LZW)
-						fi.compression = FileInfo.LZW_WITH_DIFFERENCING;
+					if (value==2 && fi.compression==Constants.LZW)
+						fi.compression = Constants.LZW_WITH_DIFFERENCING;
 					if (value==3)
 						IJ.log("TiffDecoder: unsupported predictor value of 3");
 					break;
@@ -539,17 +539,17 @@ public class TiffMaster {
 					error("ImageJ cannot open tiled TIFFs.\nTry using the Bio-Formats plugin.");
 					break;
 				case SAMPLE_FORMAT:
-					if (fi.fileType==FileInfo.GRAY32_INT && value==FLOATING_POINT)
-						fi.fileType = FileInfo.GRAY32_FLOAT;
-					if (fi.fileType==FileInfo.GRAY16_UNSIGNED) {
+					if (fi.fileType==Constants.GRAY32_INT && value==FLOATING_POINT)
+						fi.fileType = Constants.GRAY32_FLOAT;
+					if (fi.fileType==Constants.GRAY16_UNSIGNED) {
 						if (value==SIGNED)
-							fi.fileType = FileInfo.GRAY16_SIGNED;
+							fi.fileType = Constants.GRAY16_SIGNED;
 						if (value==FLOATING_POINT)
 							error("ImageJ cannot open 16-bit float TIFFs");
 					}
 					break;
 				case JPEG_TABLES:
-					if (fi.compression==FileInfo.JPEG)
+					if (fi.compression==Constants.JPEG)
 						error("Cannot open JPEG-compressed TIFFs with separate tables");
 					break;
 				case IMAGE_DESCRIPTION: 
@@ -562,7 +562,7 @@ public class TiffMaster {
 					fi.nImages = 0; // file not created by ImageJ so look at all the IFDs
 					break;
 				case METAMORPH1: case METAMORPH2:
-					if ((name.indexOf(".STK")>0||name.indexOf(".stk")>0) && fi.compression==FileInfo.COMPRESSION_NONE) {
+					if ((name.indexOf(".STK")>0||name.indexOf(".stk")>0) && fi.compression==Constants.COMPRESSION_NONE) {
 						if (tag==METAMORPH2)
 							fi.nImages=count;
 						else
@@ -592,7 +592,7 @@ public class TiffMaster {
 						return null;
 			}
 		}
-		fi.fileFormat = fi.TIFF;
+		fi.fileFormat = Constants.TIFF;
 		fi.fileName = name;
 		fi.directory = directory;
 		if (url!=null)
@@ -847,7 +847,7 @@ public class TiffMaster {
 			if (info[0].info==null)
 				info[0].info = tiffMetadata;
 			FileInfo fi = info[0];
-			if (fi.fileType==FileInfo.GRAY16_UNSIGNED && fi.description==null)
+			if (fi.fileType==Constants.GRAY16_UNSIGNED && fi.description==null)
 				fi.lutSize = 0; // ignore troublesome non-ImageJ 16-bit LUTs
 			if (debugMode) {
 				int n = info.length;
@@ -919,11 +919,11 @@ public class TiffMaster {
 		int bpsSize = 0;
 
 		switch (fi.fileType) {
-			case FileInfo.GRAY8:
+			case Constants.GRAY8:
 				photoInterp = fi.whiteIsZero?0:1;
 				break;
-			case FileInfo.GRAY16_UNSIGNED:
-			case FileInfo.GRAY16_SIGNED:
+			case Constants.GRAY16_UNSIGNED:
+			case Constants.GRAY16_SIGNED:
 				bitsPerSample = 16;
 				photoInterp = fi.whiteIsZero?0:1;
 				if (fi.lutSize>0) {
@@ -932,7 +932,7 @@ public class TiffMaster {
 				}
 				bytesPerPixel = 2;
 				break;
-			case FileInfo.GRAY32_FLOAT:
+			case Constants.GRAY32_FLOAT:
 				bitsPerSample = 32;
 				photoInterp = fi.whiteIsZero?0:1;
 				if (fi.lutSize>0) {
@@ -941,13 +941,13 @@ public class TiffMaster {
 				}
 				bytesPerPixel = 4;
 				break;
-			case FileInfo.RGB:
+			case Constants.RGB:
 				photoInterp = 2;
 				samplesPerPixel = 3;
 				bytesPerPixel = 3;
 				bpsSize = BPS_DATA_SIZE;
 				break;
-			case FileInfo.RGB48:
+			case Constants.RGB48:
 				bitsPerSample = 16;
 				photoInterp = 2;
 				samplesPerPixel = 3;
@@ -955,7 +955,7 @@ public class TiffMaster {
 				fi.nImages /= 3;
 				bpsSize = BPS_DATA_SIZE;
 				break;
-			case FileInfo.COLOR8:
+			case Constants.COLOR8:
 				photoInterp = 3;
 				nEntries++;
 				colorMapSize = MAP_SIZE*2;
@@ -965,7 +965,7 @@ public class TiffMaster {
 		}
 		if (fi.unit!=null && fi.pixelWidth!=0 && fi.pixelHeight!=0)
 			nEntries += 3; // XResolution, YResolution and ResolutionUnit
-		if (fi.fileType==fi.GRAY32_FLOAT)
+		if (fi.fileType==Constants.GRAY32_FLOAT)
 			nEntries++; // SampleFormat tag
 		makeDescriptionString();
 		if (description!=null)
@@ -996,7 +996,7 @@ public class TiffMaster {
 		if (bigTiff)
 			nextIFD = 0L;
 		writeIFD(out, (int)imageOffset, (int)nextIFD);
-		if (fi.fileType==FileInfo.RGB||fi.fileType==FileInfo.RGB48)
+		if (fi.fileType==Constants.RGB||fi.fileType==Constants.RGB48)
 			writeBitsPerPixel(out);
 		if (description!=null)
 			writeDescription(out);
@@ -1164,7 +1164,7 @@ public class TiffMaster {
 		writeEntry(out, NEW_SUBFILE_TYPE, 4, 1, 0);
 		writeEntry(out, IMAGE_WIDTH, 4, 1, fi.width);
 		writeEntry(out, IMAGE_LENGTH, 4, 1, fi.height);
-		if (fi.fileType==FileInfo.RGB||fi.fileType==FileInfo.RGB48) {
+		if (fi.fileType==Constants.RGB||fi.fileType==Constants.RGB48) {
 			writeEntry(out, BITS_PER_SAMPLE,  3, 3, tagDataOffset);
 			tagDataOffset += BPS_DATA_SIZE;
 		} else
@@ -1190,7 +1190,7 @@ public class TiffMaster {
 				unit = 3;
 			writeEntry(out, RESOLUTION_UNIT, 3, 1, unit);
 		}
-		if (fi.fileType==fi.GRAY32_FLOAT) {
+		if (fi.fileType==Constants.GRAY32_FLOAT) {
 			int format = FLOATING_POINT;
 			writeEntry(out, SAMPLE_FORMAT, 3, 1, format);
 		}
@@ -1208,7 +1208,7 @@ public class TiffMaster {
 	
 	/** Writes the 6 bytes of data required by RGB BitsPerSample tag. */
 	void writeBitsPerPixel(OutputStream out) throws IOException {
-		int bitsPerPixel = fi.fileType==FileInfo.RGB48?16:8;
+		int bitsPerPixel = fi.fileType==Constants.RGB48?16:8;
 		writeShort(out, bitsPerPixel);
 		writeShort(out, bitsPerPixel);
 		writeShort(out, bitsPerPixel);
