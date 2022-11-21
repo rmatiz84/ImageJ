@@ -18,7 +18,7 @@ import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.YesNoCancelDialog;
 import ij.io.FileInfo;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.Opener;
 
 public class NextImageOpener implements PlugIn {
@@ -99,7 +99,7 @@ public class NextImageOpener implements PlugIn {
 			if (d.cancelPressed())
 				return "Canceled";
 			else if (d.yesPressed()) {
-				FileSaver fs = new FileSaver(imp0);
+				FileMaster fs = new FileMaster(imp0);
 				if (!fs.save())
 					return "Canceled";
 			}

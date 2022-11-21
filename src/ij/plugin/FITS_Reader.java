@@ -9,7 +9,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.io.FileInfo;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.OpenDialog;
 import ij.measure.Calibration;
 import ij.process.ImageProcessor;
@@ -36,7 +36,7 @@ public class FITS_Reader extends ImagePlus implements PlugIn {
 			fi = fd.getInfo();
 		} catch (IOException e) {}
 		if (fi!=null && fi.width>0 && fi.height>0 && fi.offset>0) {
-			FileOpener fo = new FileOpener(fi);
+			FileMaster fo = new FileMaster(fi);
 			ImagePlus imp = fo.openImage();			
 			if (flipImages) {
 				if (fi.nImages==1) {

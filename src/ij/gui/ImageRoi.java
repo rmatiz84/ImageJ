@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DirectColorModel;
 
 import ij.ImagePlus;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
 
@@ -85,7 +85,7 @@ public class ImageRoi extends Roi {
 	/** Returns a serialized version of the image. */
 	public byte[] getSerializedImage() {
 		ImagePlus imp = new ImagePlus("",img);
-		return new FileSaver(imp).serialize();
+		return new FileMaster(imp).serialize();
 	}
 
 	/** Returns the current opacity. */

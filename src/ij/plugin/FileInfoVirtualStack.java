@@ -8,7 +8,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.VirtualStack;
 import ij.io.FileInfo;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.OpenDialog;
 import ij.io.TiffMaster;
 import ij.process.ByteProcessor;
@@ -120,7 +120,7 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 			}
 		}
 		nImages = info.length;
-		FileOpener fo = new FileOpener(info[0]);
+		FileMaster fo = new FileMaster(info[0]);
 		ImagePlus imp = fo.openImage();
 		if (nImages==1 && fi.fileType==FileInfo.RGB48)
 			return imp;
@@ -210,11 +210,11 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 		ImageProcessor ip = null;
 		if (IJ.debugMode) {
 			long t0 = System.currentTimeMillis();
-			FileOpener fo = new FileOpener(info[n-1]);
+			FileMaster fo = new FileMaster(info[n-1]);
 			ip = fo.openProcessor();
 			IJ.log("FileInfoVirtualStack: "+n+", offset="+info[n-1].getOffset()+", "+(System.currentTimeMillis()-t0)+"ms");
 		} else {
-			FileOpener fo = new FileOpener(info[n-1]);
+			FileMaster fo = new FileMaster(info[n-1]);
 			if (info[n-1].fileType==FileInfo.RGB48) {
 				ImagePlus imp = fo.openImage();
 				if (info[n-1].sliceNumber>0)

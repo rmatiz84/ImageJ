@@ -57,7 +57,7 @@ import ij.gui.Wand;
 import ij.gui.YesNoCancelDialog;
 import ij.io.DirectoryChooser;
 import ij.io.FileInfo;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.LogStream;
 import ij.io.OpenDialog;
 import ij.io.Opener;
@@ -2162,7 +2162,7 @@ public class IJ {
 			return;
 		} else if (format.indexOf("jpeg")!=-1 || format.indexOf("jpg")!=-1) {
 			path = updateExtension(path, ".jpg");
-			JpegWriter.save(imp, path, FileSaver.getJpegQuality());
+			JpegWriter.save(imp, path, FileMaster.getJpegQuality());
 			return;
 		} else if (format.indexOf("gif")!=-1) {
 			path = updateExtension(path, ".gif");
@@ -2226,10 +2226,10 @@ public class IJ {
 		if (imp==null)
 			imp = getImage();
 		if (path==null || path.equals(""))
-			return (new FileSaver(imp)).saveAsTiff();
+			return (new FileMaster(imp)).saveAsTiff();
 		if (!path.endsWith(".tiff"))
 			path = updateExtension(path, ".tif");
-		FileSaver fs = new FileSaver(imp);
+		FileMaster fs = new FileMaster(imp);
 		boolean ok;
 		if (imp.getStackSize()>1)
 			ok = fs.saveAsTiffStack(path);

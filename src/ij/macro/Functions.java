@@ -80,7 +80,7 @@ import ij.gui.WaitForUserDialog;
 import ij.gui.Wand;
 import ij.gui.YesNoCancelDialog;
 import ij.io.FileInfo;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.OpenDialog;
 import ij.io.Opener;
 import ij.io.SaveDialog;
@@ -3003,7 +3003,7 @@ public class Functions implements MacroConstants, Measurements {
 		usePointerCursor = Prefs.usePointerCursor;
 		hideProcessStackDialog = IJ.hideProcessStackDialog;
 		divideByZeroValue = FloatBlitter.divideByZeroValue;
-		jpegQuality = FileSaver.getJpegQuality();
+		jpegQuality = FileMaster.getJpegQuality();
 		saveLineWidth = Line.getWidth();
 		doScaling = ImageConverter.getDoScaling();
 		weightedColor = Prefs.weightedColor;
@@ -3042,7 +3042,7 @@ public class Functions implements MacroConstants, Measurements {
 		Prefs.usePointerCursor = usePointerCursor;
 		IJ.hideProcessStackDialog = hideProcessStackDialog;
 		FloatBlitter.divideByZeroValue = divideByZeroValue;
-		FileSaver.setJpegQuality(jpegQuality);
+		FileMaster.setJpegQuality(jpegQuality);
 		Line.setWidth(saveLineWidth);
 		ImageConverter.setDoScaling(doScaling);
 		if (weightedColor!=Prefs.weightedColor) {

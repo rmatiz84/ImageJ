@@ -145,7 +145,7 @@ public class ImportDialog {
 			if (list[i].startsWith("."))
 				continue;
 			fi.fileName = list[i];
-			imp = new FileOpener(fi).openImage();
+			imp = new FileMaster(fi).openImage();
 			if (imp==null)
 				IJ.log(list[i] + ": unable to open");
 			else {
@@ -215,7 +215,7 @@ public class ImportDialog {
 		} else if (virtual)
 			new FileInfoVirtualStack(fi);
 		else {
-			FileOpener fo = new FileOpener(fi);
+			FileMaster fo = new FileMaster(fi);
 			ImagePlus imp = fo.openImage();
 			String filePath = fi.getFilePath();
 			filePath = Recorder.fixPath(filePath);

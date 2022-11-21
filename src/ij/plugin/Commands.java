@@ -12,7 +12,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.gui.ImageWindow;
 import ij.gui.NewImage;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.Opener;
 import ij.macro.Interpreter;
 import ij.plugin.frame.PlugInDialog;
@@ -69,10 +69,10 @@ public class Commands implements PlugIn {
 		if (imp!=null) {
 			if (imp.getStackSize()>1) {
 				imp.setIgnoreFlush(true);
-				new FileSaver(imp).save();
+				new FileMaster(imp).save();
 				imp.setIgnoreFlush(false);
 			} else
-				new FileSaver(imp).save();
+				new FileMaster(imp).save();
 		} else
 			IJ.noImage();
 	}

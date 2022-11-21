@@ -12,7 +12,7 @@ import ij.ImagePlus;
 import ij.Macro;
 import ij.Prefs;
 import ij.io.FileInfo;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.OpenDialog;
 import ij.measure.Calibration;
 import ij.process.ImageProcessor;
@@ -119,7 +119,7 @@ public class DICOM extends ImagePlus implements PlugIn {
 			return;
 		}
 		if (fi!=null && fi.width>0 && fi.height>0 && fi.offset>0) {
-			FileOpener fo = new FileOpener(fi);
+			FileMaster fo = new FileMaster(fi);
 			ImagePlus imp = fo.openImage();
 			// Avoid opening as float even if slope != 1.0 in case ignoreRescaleSlope or fixedDicomScaling
 			// were checked in the DICOM preferences.

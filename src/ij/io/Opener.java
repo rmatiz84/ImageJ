@@ -356,7 +356,7 @@ public class Opener {
 	*/
 	public ImagePlus openImage(String directory, String name) {
 		ImagePlus imp;
-		FileOpener.setSilentMode(silentMode);
+		FileMaster.setSilentMode(silentMode);
 		if (directory.length()>0 && !(directory.endsWith("/")||directory.endsWith("\\")))
 			directory += Prefs.separator;
 		OpenDialog.setLastDirectory(directory);
@@ -826,7 +826,7 @@ public class Opener {
 			return null;
 		FileInfo fi = info[0];
 		if (fi.nImages>1)
-			return new FileOpener(fi).openImage(); // open contiguous images as stack
+			return new FileMaster(fi).openImage(); // open contiguous images as stack
 		else {
 			ColorModel cm = createColorModel(fi);
 			ImageStack stack = new ImageStack(fi.width, fi.height, cm);
@@ -915,7 +915,7 @@ public class Opener {
 			//if (fi.whiteIsZero)
 			//	new StackProcessor(stack, stack.getProcessor(1)).invert();
 			ImagePlus imp = new ImagePlus(fi.fileName, stack);
-			new FileOpener(fi).setCalibration(imp);
+			new FileMaster(fi).setCalibration(imp);
 			imp.setFileInfo(fi);
 			if (fi.info!=null)
 				imp.setProperty("Info", fi.info);
@@ -981,7 +981,7 @@ public class Opener {
 			fi.stripOffsets = info[n-1].stripOffsets; 
 			fi.stripLengths = info[n-1].stripLengths; 
 		}
-		FileOpener fo = new FileOpener(fi);
+		FileMaster fo = new FileMaster(fi);
 		return fo.openImage();
 	}
 
@@ -1091,7 +1091,7 @@ public class Opener {
 		} catch (IOException e) {
 			return null;
 		}
-		FileOpener opener = new FileOpener(info[0]);
+		FileMaster opener = new FileMaster(info[0]);
 		ImagePlus imp = opener.openImage();
 		if (imp==null)
 			return null;
@@ -1148,7 +1148,7 @@ public class Opener {
 			if (imp!=null)
 				return imp;
 		}
-		FileOpener fo = new FileOpener(info[0]);
+		FileMaster fo = new FileMaster(info[0]);
 		imp = fo.openImage();
 		if (imp==null)
 			return null;

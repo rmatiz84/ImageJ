@@ -2,7 +2,7 @@ package ij;
 import java.util.Hashtable;
 import java.util.Locale;
 
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.Opener;
 import ij.macro.Interpreter;
 
@@ -33,7 +33,7 @@ public class Macro {
 		ImagePlus imp = WindowManager.getCurrentImage();
 		if (imp==null)
 			return false;
-		FileSaver fs = new FileSaver(imp);
+		FileMaster fs = new FileMaster(imp);
 		if (path==null || path.equals(""))
 			return fs.saveAsTiff();
 		if (imp.getStackSize()>1)

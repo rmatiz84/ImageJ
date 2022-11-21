@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.WindowManager;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.SaveDialog;
 import ij.process.ImageProcessor;
 
@@ -36,7 +36,7 @@ public class JpegWriter implements PlugIn {
 		ImagePlus imp = WindowManager.getCurrentImage();
 		if (imp==null) return;
 		imp.startTiming();
-		saveAsJpeg(imp,arg,FileSaver.getJpegQuality());
+		saveAsJpeg(imp,arg,FileMaster.getJpegQuality());
 		IJ.showTime(imp, imp.getStartTime(), "JpegWriter: ");
 	}
 
@@ -149,11 +149,11 @@ public class JpegWriter implements PlugIn {
 	}
 	
 	public static void setQuality(int jpegQuality) {
-		FileSaver.setJpegQuality(jpegQuality);
+		FileMaster.setJpegQuality(jpegQuality);
 	}
 
 	public static int getQuality() {
-		return FileSaver.getJpegQuality();
+		return FileMaster.getJpegQuality();
 	}
 	
 	/** Enhance quality of JPEGs by disabing chroma subsampling. 

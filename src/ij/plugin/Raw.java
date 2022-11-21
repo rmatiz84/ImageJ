@@ -6,7 +6,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.VirtualStack;
 import ij.io.FileInfo;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.ImportDialog;
 import ij.io.OpenDialog;
 
@@ -32,7 +32,7 @@ public class Raw implements PlugIn {
 		if (parent!=null)
 			fi.directory = parent+ "/";
 		fi.fileName = f.getName();
-		return (new FileOpener(fi)).open(false);
+		return (new FileMaster(fi)).open(false);
 	}	
 
 

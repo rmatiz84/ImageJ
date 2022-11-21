@@ -7,7 +7,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.gui.Line;
 import ij.gui.Roi;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.measure.ResultsTable;
 import ij.plugin.filter.Analyzer;
 import ij.plugin.frame.LineWidthAdjuster;
@@ -113,7 +113,7 @@ public class Options implements PlugIn {
 	// Input/Output options
 	void io() {
 		GenericDialog gd = new GenericDialog("I/O Options");
-		gd.addNumericField("JPEG quality (0-100):", FileSaver.getJpegQuality(), 0, 3, "");
+		gd.addNumericField("JPEG quality (0-100):", FileMaster.getJpegQuality(), 0, 3, "");
 		gd.addNumericField("GIF and PNG transparent index:", Prefs.getTransparentIndex(), 0, 3, "");
 		gd.addStringField("File extension for tables (.csv, .tsv or .txt):", Prefs.defaultResultsExtension(), 4);
 		gd.addCheckbox("Use JFileChooser to open/save", Prefs.useJFileChooser);
@@ -139,7 +139,7 @@ public class Options implements PlugIn {
 		int quality = (int)gd.getNextNumber();
 		if (quality<0) quality = 0;
 		if (quality>100) quality = 100;
-		FileSaver.setJpegQuality(quality);
+		FileMaster.setJpegQuality(quality);
 		int transparentIndex = (int)gd.getNextNumber();
 		Prefs.setTransparentIndex(transparentIndex);
 		String extension = gd.getNextString();

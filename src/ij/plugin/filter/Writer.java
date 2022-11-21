@@ -1,6 +1,6 @@
 package ij.plugin.filter;
 import ij.ImagePlus;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.process.ImageProcessor;
 
 
@@ -19,27 +19,27 @@ public class Writer implements PlugInFilter {
 
 	public void run(ImageProcessor ip) {
 		if (arg.equals("tiff"))
-			new FileSaver(imp).saveAsTiff();
+			new FileMaster(imp).saveAsTiff();
 		else if (arg.equals("gif"))
-			new FileSaver(imp).saveAsGif();
+			new FileMaster(imp).saveAsGif();
 		else if (arg.equals("jpeg"))
-			new FileSaver(imp).saveAsJpeg();
+			new FileMaster(imp).saveAsJpeg();
 		else if (arg.equals("text"))
-			new FileSaver(imp).saveAsText();
+			new FileMaster(imp).saveAsText();
 		else if (arg.equals("lut"))
-			new FileSaver(imp).saveAsLut();
+			new FileMaster(imp).saveAsLut();
 		else if (arg.equals("raw"))
-			new FileSaver(imp).saveAsRaw();
+			new FileMaster(imp).saveAsRaw();
 		else if (arg.equals("zip"))
-			new FileSaver(imp).saveAsZip();
+			new FileMaster(imp).saveAsZip();
 		else if (arg.equals("bmp"))
-			new FileSaver(imp).saveAsBmp();
+			new FileMaster(imp).saveAsBmp();
 		else if (arg.equals("png"))
-			new FileSaver(imp).saveAsPng();
+			new FileMaster(imp).saveAsPng();
 		else if (arg.equals("pgm"))
-			new FileSaver(imp).saveAsPgm();
+			new FileMaster(imp).saveAsPgm();
 		else if (arg.equals("fits"))
-			new FileSaver(imp).saveAsFits();
+			new FileMaster(imp).saveAsFits();
 	}
 	
 }

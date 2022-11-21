@@ -14,7 +14,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.gui.Overlay;
 import ij.gui.Roi;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.measure.Calibration;
 import ij.plugin.frame.Recorder;
 import ij.process.ImageProcessor;
@@ -98,7 +98,7 @@ public class StackWriter implements PlugIn {
 				+" digits are required to generate \nunique file names for "+stackSize+" images.");
 			return;			
 		}
-		if (format.equals("fits") && !FileSaver.okForFits(imp))
+		if (format.equals("fits") && !FileMaster.okForFits(imp))
 			return;			
 		if (format.equals("text"))
 			format = "text image";

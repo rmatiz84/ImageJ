@@ -11,7 +11,7 @@ import ij.ImagePlus;
 import ij.Macro;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.measure.Calibration;
 import ij.plugin.frame.Recorder;
 import ij.process.ImageProcessor;
@@ -207,7 +207,7 @@ public class ImageProperties implements PlugInFilter, TextListener {
 		else
 			imp.repaintWindow();
 		if (global2 && global2!=global1)
-			FileOpener.setShowConflictMessage(true);			
+			FileMaster.setShowConflictMessage(true);			
 			
 		if (Recorder.record) {
 			if (Recorder.scriptMode()) {

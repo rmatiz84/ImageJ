@@ -16,7 +16,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.gui.Line;
 import ij.gui.Roi;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.measure.Calibration;
 import ij.process.ImageProcessor;
 import ij.util.Tools;
@@ -127,7 +127,7 @@ public class ScaleDialog implements PlugInFilter {
 		else
 			imp.repaintWindow();
 		if (global2 && global2!=global1)
-			FileOpener.setShowConflictMessage(true);
+			FileMaster.setShowConflictMessage(true);
 	}
 	
 	/** Creates a panel containing an "Unscale" button. */

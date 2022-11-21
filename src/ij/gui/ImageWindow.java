@@ -27,7 +27,7 @@ import ij.ImageStack;
 import ij.Menus;
 import ij.Prefs;
 import ij.WindowManager;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.macro.Interpreter;
 import ij.measure.Calibration;
 import ij.plugin.PointToolOptions;
@@ -456,7 +456,7 @@ public class ImageWindow extends Frame implements FocusListener, WindowListener,
 			if (d.cancelPressed())
 				return false;
 			else if (d.yesPressed()) {
-				FileSaver fs = new FileSaver(imp);
+				FileMaster fs = new FileMaster(imp);
 				if (!fs.save()) return false;
 			}
 		}

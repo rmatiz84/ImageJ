@@ -17,7 +17,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.gui.Plot;
 import ij.gui.PlotWindow;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.OpenDialog;
 import ij.io.SaveDialog;
 import ij.measure.Calibration;
@@ -227,7 +227,7 @@ public class Calibrator implements PlugInFilter, Measurements, ActionListener {
 		else
 			imp.repaintWindow();
 		if (global2 && global2!=global1)
-			FileOpener.setShowConflictMessage(true);
+			FileMaster.setShowConflictMessage(true);
 		if (function!=Calibration.NONE && showPlotFlag) {
 			if (curveFitter!=null)
 				Fitter.plot(curveFitter, bitDepth==8);

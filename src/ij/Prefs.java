@@ -21,7 +21,7 @@ import ij.gui.NewImage;
 import ij.gui.PlotWindow;
 import ij.gui.Roi;
 import ij.gui.Toolbar;
-import ij.io.FileSaver;
+import ij.io.FileMaster;
 import ij.io.ImportDialog;
 import ij.io.OpenDialog;
 import ij.plugin.Animator;
@@ -507,7 +507,7 @@ public class Prefs {
 			prefs.put(SHOW_ALL_COLOR, Tools.c2hex(ImageCanvas.getShowAllColor()));
 			prefs.put(FCOLOR, Tools.c2hex(Toolbar.getForegroundColor()));
 			prefs.put(BCOLOR, Tools.c2hex(Toolbar.getBackgroundColor()));
-			prefs.put(JPEG, Integer.toString(FileSaver.getJpegQuality()));
+			prefs.put(JPEG, Integer.toString(FileMaster.getJpegQuality()));
 			prefs.put(FPS, Double.toString(Animator.getFrameRate()));
 			prefs.put(DIV_BY_ZERO_VALUE, Double.toString(FloatBlitter.divideByZeroValue));
 			prefs.put(NOISE_SD, Double.toString(Filters.getSD()));

@@ -43,7 +43,7 @@ import ij.gui.StackWindow;
 import ij.gui.TextRoi;
 import ij.gui.Toolbar;
 import ij.io.FileInfo;
-import ij.io.FileOpener;
+import ij.io.FileMaster;
 import ij.io.Opener;
 import ij.macro.Interpreter;
 import ij.measure.Calibration;
@@ -2342,7 +2342,7 @@ public class ImagePlus implements ImageObserver, Measurements, Cloneable {
 			saveRoi = (Roi)roi.clone();
 		}
 		trimProcessor();
-		new FileOpener(fi).revertToSaved(this);
+		new FileMaster(fi).revertToSaved(this);
 		if (Prefs.useInvertingLut && getBitDepth()==8 && ip!=null && !ip.isInvertedLut()&& !ip.isColorLut())
 			invertLookupTable();
 		if (getProperty("FHT")!=null) {
