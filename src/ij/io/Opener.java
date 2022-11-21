@@ -936,7 +936,7 @@ public class Opener {
 	/** Attempts to open the specified file as a tiff.
 		Returns an ImagePlus object if successful. */
 	public ImagePlus openTiff(String directory, String name) {
-		TiffDecoder td = new TiffDecoder(directory, name);
+		TiffMaster td = new TiffMaster(directory, name);
 		if (IJ.debugMode) td.enableDebugging();
 		FileInfo[] info=null;
 		try {
@@ -953,7 +953,7 @@ public class Opener {
 	
 	/** Opens the nth image of the specified TIFF stack. */
 	public ImagePlus openTiff(String path, int n) {
-		TiffDecoder td = new TiffDecoder(getDir(path), getName(path));
+		TiffMaster td = new TiffMaster(getDir(path), getName(path));
 		if (IJ.debugMode) td.enableDebugging();
 		FileInfo[] info=null;
 		try {
@@ -988,7 +988,7 @@ public class Opener {
 	/** Returns the FileInfo of the specified TIFF file. */
 	public static FileInfo[] getTiffFileInfo(String path) {
 		Opener o = new Opener();
-		TiffDecoder td = new TiffDecoder(o.getDir(path), o.getName(path));
+		TiffMaster td = new TiffMaster(o.getDir(path), o.getName(path));
 		if (IJ.debugMode) td.enableDebugging();
 		try {
 			return td.getTiffInfo();
@@ -1002,7 +1002,7 @@ public class Opener {
 	public ImagePlus openTiff(InputStream in, String name) {
 		FileInfo[] info = null;
 		try {
-			TiffDecoder td = new TiffDecoder(in, name);
+			TiffMaster td = new TiffMaster(in, name);
 			if (IJ.debugMode) td.enableDebugging();
 			info = td.getTiffInfo();
 		} catch (FileNotFoundException e) {
@@ -1082,7 +1082,7 @@ public class Opener {
 	/** Deserialize a byte array that was serialized using the FileSaver.serialize(). */
 	public ImagePlus deserialize(byte[] bytes) {
 		ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
-		TiffDecoder decoder = new TiffDecoder(stream, "Untitled");
+		TiffMaster decoder = new TiffMaster(stream, "Untitled");
 		if (IJ.debugMode)
 			decoder.enableDebugging();
 		FileInfo[] info = null;

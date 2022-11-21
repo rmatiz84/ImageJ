@@ -10,7 +10,7 @@ import ij.VirtualStack;
 import ij.io.FileInfo;
 import ij.io.FileOpener;
 import ij.io.OpenDialog;
-import ij.io.TiffDecoder;
+import ij.io.TiffMaster;
 import ij.process.ByteProcessor;
 import ij.process.ColorProcessor;
 import ij.process.FloatProcessor;
@@ -85,7 +85,7 @@ public class FileInfoVirtualStack extends VirtualStack implements PlugIn {
 			IJ.error("Virtual Stack", "ZIP compressed stacks not supported");
 			return;
 		}
-		TiffDecoder td = new TiffDecoder(dir, name);
+		TiffMaster td = new TiffMaster(dir, name);
 		if (IJ.debugMode) td.enableDebugging();
 		IJ.showStatus("Decoding TIFF header...");
 		try {

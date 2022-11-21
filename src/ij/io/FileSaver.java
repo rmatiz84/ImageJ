@@ -134,7 +134,7 @@ public class FileSaver {
 		fi.properties = imp.getPropertiesAsArray();
 		DataOutputStream out = null;
 		try {
-			TiffEncoder file = new TiffEncoder(fi);
+			TiffMaster file = new TiffMaster(fi);
 			out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(path),bsize));
 			file.write(out);
 			out.close();
@@ -226,7 +226,7 @@ public class FileSaver {
 		if (imp.isComposite()) saveDisplayRangesAndLuts(imp, fi);
 		DataOutputStream out = null;
 		try {
-			TiffEncoder file = new TiffEncoder(fi);
+			TiffMaster file = new TiffMaster(fi);
 			out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(path),bsize));
 			file.write(out);
 			out.close();
@@ -260,7 +260,7 @@ public class FileSaver {
 		if (imp.isComposite()) saveDisplayRangesAndLuts(imp, fi);
 		ByteArrayOutputStream out = null;
 		try {
-			TiffEncoder encoder = new TiffEncoder(fi);
+			TiffMaster encoder = new TiffMaster(fi);
 			out = new ByteArrayOutputStream();
 			encoder.write(out);
 			out.close();
@@ -334,7 +334,7 @@ public class FileSaver {
 			ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(path));
 			out = new DataOutputStream(new BufferedOutputStream(zos,bsize));
         	zos.putNextEntry(new ZipEntry(name));
-			TiffEncoder te = new TiffEncoder(fi);
+        	TiffMaster te = new TiffMaster(fi);
 			te.write(out);
 			out.close();
 		}
